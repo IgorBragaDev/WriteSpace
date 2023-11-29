@@ -1,6 +1,6 @@
 const sequelize = require("sequelize")
 const connectionDatabase = require("../config/database")
-const User = require("../models/User")
+const User = require("../App/models/User")
 
 const models = [User]
 class Database{
