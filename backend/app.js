@@ -1,9 +1,9 @@
 require("dotenv").config();
-
 const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
 require("./src/database/index")
+
 
 class App {
   constructor() {
