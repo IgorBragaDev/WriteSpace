@@ -1,25 +1,21 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
-const connectionDatabase = require("../config/database")
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
 
-const sequelize = new Sequelize(connectionDatabase);
-
-class User extends Model {
-  static init(sequelize) {
-    super.init(
-        {
-            name : Sequelize.STRING,
-            email : Sequelize.STRING,
-            password: Sequelize.STRING,
-        },
-        {
-            sequelize,
-        }
- )
+    static associate(models) {
+      // define association here
+    }
   }
-}
-User.init(sequelize);
-console.log(User === sequelize.models.User); // true
-
-
-
-module.exports = User
+  User.init({
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'User',
+  });
+  return User;
+};
