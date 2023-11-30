@@ -3,7 +3,19 @@
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+}
+
+.resposiveContainer {
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .checkBoxContainer {
@@ -13,17 +25,16 @@
   gap: 13px;
   max-width: 324px;
   width: 100%;
-  
 }
 
-.formRegister{
+.formRegister {
   display: flex;
   flex-direction: column;
   gap: 20px;
   height: 100%;
 }
 
-.logoTittleContainer{
+.logoTittleContainer {
   width: 100%;
   max-width: 320px;
   min-width: 290px;
@@ -32,4 +43,37 @@
   gap: 25px;
   justify-content: flex-start;
   margin-bottom: 20px;
+}
+.inputsContainer {
+  @media (min-width: 1024px) {
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2, 1fr));
+    gap: 10px;
+  }
+}
+
+.steveContainer {
+  display: none;
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  border-right: 1px solid #d7d7d7;
+  border-radius: 20px;
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.steveImage {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  /* max-width: 690px;  */
+}
+
+.wavesImage {
+  width: 100%;
+  height: 100vh;
 }
