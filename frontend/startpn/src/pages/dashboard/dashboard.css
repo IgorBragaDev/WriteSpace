@@ -34,6 +34,11 @@
   justify-content: space-around;
   position: absolute;
   top: 0;
+  left: -500px;
+  transition: left 0.3s ease; 
+}
+
+.sideMenuBar.open {
   left: 0;
 }
 
