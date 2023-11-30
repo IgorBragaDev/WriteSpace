@@ -34,7 +34,7 @@
   justify-content: space-around;
   position: absolute;
   top: 0;
-  left: -500px;
+  left: -1000px;
   transition: left 0.3s ease; 
 }
 
@@ -53,4 +53,30 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.DashContainer{
+  padding: 16px 20px ;
+}
+
+.navigationToCreateCard{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  border: 1px solid blue;
+}
+
+.ellipseButton{
+  border: 1px solid red;
+  background-color: red;
+  position: relative;
+}
+
+.ellipseCircle{
+  position: absolute;
+  top: 50%;
+  left: 20px;
 }
