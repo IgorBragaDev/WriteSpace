@@ -1,0 +1,46 @@
+.LoginpageContainer {
+    height: 100vh;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    @media (min-width: 1024px) {
+      width: 50%;
+    }
+  }
+
+  .logoTittleContainerLogin{
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+  }
+
+  .steveContainerLogin   {
+    display: none;
+    position: relative;
+    width: 50%;
+    height: 100vh;
+    border-right: 1px solid #d7d7d7;
+    border-radius: 20px;
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+  
+  .steveImageLogin {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    /* max-width: 690px;  */
+  }
+  
+  .wavesImageLogin {
+    width: 100%;
+    height: 100vh;
+  }
+  

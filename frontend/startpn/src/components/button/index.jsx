@@ -9,6 +9,7 @@ const Button = ({
   border,
   backgroundColor,
   buttonTypography,
+  marginTop
 }) => {
   const buttonStyle = {
     height: height,
@@ -18,6 +19,7 @@ const Button = ({
     borderRadius: borderRadius,
     border: border,
     backgroundColor: backgroundColor,
+    marginTop : marginTop
   };
   return (
     <>
