@@ -8,6 +8,16 @@
   letter-spacing: 0.72px;
 }
 
+.text_circular_color_blue_bold {
+  color: #476ee6;
+  font-family: Poppins;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24.286px;
+  letter-spacing: 0.101px;
+}
+
 .text_circular_label {
   color: #000;
   font-family: "Poppins", sans-serif;
@@ -58,5 +68,4 @@
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-
 }
