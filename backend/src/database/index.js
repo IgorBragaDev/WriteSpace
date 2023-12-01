@@ -8,7 +8,7 @@ const Categories = require ("../App/models/Categories")
 
 connection.sync()
 console.log("Fim do arquivo connection.js");
-// User.init(connection)
+User.init(connection)
 Categories.init(connection)
 
 Categories.associate(connection.models)

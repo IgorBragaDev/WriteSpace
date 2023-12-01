@@ -1,5 +1,6 @@
 const { Router } = require("express");
 
+const authMiddleware = require("./src/App/middlewares/auth")
 /* CONTROLLERS */
 
 const UserController = require("./src/App/controllers/ControllerUser");
@@ -15,6 +16,6 @@ routes.post("/sessions/login", UserController.login)
 
 /*CATEGORIES*/
 
-routes.post("/categories/:user_id", CategoriesController.createCategory)
+routes.post("/categories",authMiddleware ,CategoriesController.createCategory)
 
 module.exports = routes

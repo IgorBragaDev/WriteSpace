@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
-const sequelize = require("../../database");
 class User extends Model {
   async setPassword(password) {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -31,8 +30,6 @@ class User extends Model {
   }
 }
 
-User.init(sequelize);
 
-console.log(User === sequelize.models.User);
 
 module.exports = User;
