@@ -1,9 +1,15 @@
+console.log("Início do arquivo connection.js");
+
 const Sequelize = require("sequelize");
 const dbConfig = require("../config/database");
+const connection = new Sequelize(dbConfig)
 const User = require("../App/models/User");
 
-const connection = new Sequelize(dbConfig)
-User.init(connection)
+connection.sync()
+console.log("Fim do arquivo connection.js");
+// User.init(connection)
+module.exports = connection
+
 // const models = [User];
 // class Database {
 //   constructor() {
@@ -23,5 +29,3 @@ User.init(connection)
 //   }
 
 // }
-
-module.exports = connection

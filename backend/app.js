@@ -1,3 +1,4 @@
+
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
@@ -7,11 +8,13 @@ const dataBase = require("./src/database/index");
 
 class App {
   constructor() {
+
+    this.database = dataBase;
+    this.start();
     this.server = express();
     this.middlewares();
     this.routes();
-    this.database = dataBase;
-    this.start();
+
   }
 
   middlewares() {
@@ -24,12 +27,14 @@ class App {
     this.server.use(routes);
   }
   async start() {
+
     try {
       await this.database.authenticate();
       console.log("Conexão com o banco de dados estabelecida com sucesso.");
     } catch (error) {
       console.error("Erro ao conectar ao banco de dados:", error);
     }
+
   }
 }
 
