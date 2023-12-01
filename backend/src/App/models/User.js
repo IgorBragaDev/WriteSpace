@@ -15,6 +15,7 @@ class User extends Model {
       },
       {
         sequelize,
+        timestamps: true,
         hooks: {
           beforeCreate: async (user) => {
             await user.setPassword(user.password);
@@ -31,6 +32,7 @@ class User extends Model {
 }
 
 User.init(sequelize);
+
 console.log(User === sequelize.models.User);
 
 module.exports = User;

@@ -4,10 +4,14 @@ const Sequelize = require("sequelize");
 const dbConfig = require("../config/database");
 const connection = new Sequelize(dbConfig)
 const User = require("../App/models/User");
+const Categories = require ("../App/models/Categories")
 
 connection.sync()
 console.log("Fim do arquivo connection.js");
 // User.init(connection)
+Categories.init(connection)
+
+Categories.associate(connection.models)
 module.exports = connection
 
 // const models = [User];
