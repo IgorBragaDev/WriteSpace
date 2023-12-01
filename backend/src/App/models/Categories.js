@@ -1,18 +1,18 @@
-const sequelize = require("../../database");
-const { Model, DataTypes } = require("sequelize");
+// const sequelize = require("../../database");
+// const { Model, DataTypes } = require("sequelize");
 
-class Categories extends Model {
-  static associate(models) {}
-}
+// class Categories extends Model {
+//   static associate(models) {}
+// }
 
-Categories.init(
-  {
-    title: DataTypes.STRING,
-  },
-  {
-    sequelize,
-    modelName: "Categories",
-  }
-);
+// Categories.init(
+//   {
+//     title: DataTypes.STRING,
+//   },
+//   {
+//     sequelize,
+//     modelName: "Categories",
+//   }
+// );
 
-module.exports = Categories;
+// module.exports = Categories;
