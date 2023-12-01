@@ -32,7 +32,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Adicione mais campos conforme necessário
   },
   {
     sequelize,

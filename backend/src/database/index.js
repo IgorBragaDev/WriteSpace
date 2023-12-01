@@ -15,12 +15,12 @@ class Database {
       await this.connection.authenticate();
       console.log("Conexão bem-sucedida.");
 
-      models.forEach((model) => {
-        model.init(this.connection);
-        if (model.associate) {
-          model.associate(this.connection.models);
-        }
-      });
+      // models.forEach((model) => {
+      //   model.init(this.connection);
+      //   if (model.associate) {
+      //     model.associate(this.connection.models);
+      //   }
+      // });
       // Inicializar os modelos
       // models.forEach((model) => model.init(this.connection));
       // models.forEach(async (model) => {
