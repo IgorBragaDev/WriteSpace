@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
 const connectionDatabase = require("../config/database");
 const User = require("../App/models/User");
+const Category = require("../App/models/Categories");
 
-const models = [User];
+const models = [User, Category];
 class Database {
   constructor() {
     this.connection = new Sequelize(connectionDatabase);
@@ -14,21 +15,27 @@ class Database {
       await this.connection.authenticate();
       console.log("Conexão bem-sucedida.");
 
+      models.forEach((model) => {
+        model.init(this.connection);
+        if (model.associate) {
+          model.associate(this.connection.models);
+        }
+      });
       // Inicializar os modelos
       // models.forEach((model) => model.init(this.connection));
       // models.forEach(async (model) => {
       //   console.log(model)
-        // try {
-        //   const instance = new model(); // Crie uma instância do modelo
-        //   await instance.init(
-        //     this.connection
-        //   );
-        //   if (instance.constructor.associate) {
-        //     instance.constructor.associate(this.connection.models);
-        //   }
-        // } catch (error) {
-        //   console.error("Erro ao inicializar modelo:", error);
-        // }
+      // try {
+      //   const instance = new model(); // Crie uma instância do modelo
+      //   await instance.init(
+      //     this.connection
+      //   );
+      //   if (instance.constructor.associate) {
+      //     instance.constructor.associate(this.connection.models);
+      //   }
+      // } catch (error) {
+      //   console.error("Erro ao inicializar modelo:", error);
+      // }
       // });
 
       // // Aplicar associações, se houver

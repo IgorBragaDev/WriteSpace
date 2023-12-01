@@ -1,11 +1,14 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../../database");
-
+const Caregory = require("./Categories");
 class User extends Model {
   async setPassword(password) {
     const hashedPassword = await bcrypt.hash(password, 10);
     this.setDataValue("password", hashedPassword);
+  }
+  static associate(models) {
+    this.hasMany(models.Caregory, { foreignKey: "userId", as: "categories" });
   }
 }
 
