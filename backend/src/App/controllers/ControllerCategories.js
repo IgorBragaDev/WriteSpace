@@ -48,6 +48,20 @@ class ControllerCategories {
       res.status(500).send("Erro interno do servidor");
     }
   }
+
+  async getAllUserCategories(req, res) {
+    try {
+      const userId = res.locals.user.id;
+      const userCategories = await Categories.findAll({
+        where: { user_id: userId },
+      });
+
+      res.status(200).json(userCategories);
+    } catch (error) {
+      console.error("Erro ao obter categorias do usuário:", error);
+      res.status(500).send("Erro interno do servidor");
+    }
+  }
 }
 
 module.exports = new ControllerCategories();
