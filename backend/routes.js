@@ -18,7 +18,7 @@ routes.post("/sessions/login", UserController.login)
 /*CATEGORIES*/
 
 routes.post("/categories",authMiddleware ,CategoriesController.createCategory)
-routes.post("/categories/:categoryId",authMiddleware ,CategoriesController.updateCategory)
+routes.put("/categories/:categoryId",authMiddleware ,CategoriesController.updateCategory)
 routes.get("/categories",authMiddleware ,CategoriesController.getAllUserCategories)
 
 
