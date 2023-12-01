@@ -9,6 +9,7 @@ const routes = Router();
 /* SESSIONS */
 
 routes.post("/sessions", UserController.register);
+routes.post("/sessions/login", UserController.login)
 
 
 module.exports = routes

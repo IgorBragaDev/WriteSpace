@@ -10,17 +10,8 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
-    this.database = new dataBase();
-    this.initialize();
-  }
-
-  async initialize() {
-    try {
-      await this.database.init();
-      console.log("Conexão com o banco de dados estabelecida.");
-    } catch (error) {
-      console.error("Erro ao inicializar a aplicação:", error);
-    }
+    this.database = dataBase;
+    this.start();
   }
 
   middlewares() {
@@ -31,6 +22,14 @@ class App {
 
   routes() {
     this.server.use(routes);
+  }
+  async start() {
+    try {
+      await this.database.authenticate();
+      console.log("Conexão com o banco de dados estabelecida com sucesso.");
+    } catch (error) {
+      console.error("Erro ao conectar ao banco de dados:", error);
+    }
   }
 }
 
