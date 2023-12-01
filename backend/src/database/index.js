@@ -8,7 +8,6 @@ const Categories = require("../App/models/Categories");
 const Methodology = require("../App/models/methodology");
 
 connection.sync();
-console.log("Fim do arquivo connection.js");
 User.init(connection);
 Categories.init(connection);
 Methodology.init(connection);
