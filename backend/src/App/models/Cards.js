@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
-class Methodology extends Model {
+class Card extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -9,8 +9,8 @@ class Methodology extends Model {
       },
       {
         sequelize,
-        modelName: "Methodology",
-        tableName: "methodology",
+        modelName: "Card",
+        tableName: "cards",
       }
     );
   }
@@ -19,4 +19,4 @@ class Methodology extends Model {
   }
 }
 
-module.exports = Methodology;
+module.exports = Card;

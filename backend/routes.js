@@ -7,7 +7,7 @@ const UserController = require("./src/App/controllers/ControllerUser");
 
 const CategoriesController = require("./src/App/controllers/ControllerCategories")
 
-const MethodologyController = require("./src/App/controllers/ControllerMethodology")
+const CardsController = require("./src/App/controllers/ControllerCards")
 
 const routes = Router();
 
@@ -23,9 +23,9 @@ routes.post("/categories",authMiddleware ,CategoriesController.createCategory)
 routes.put("/categories/:categoryId",authMiddleware ,CategoriesController.updateCategory)
 routes.get("/categories",authMiddleware ,CategoriesController.getAllUserCategories)
 
-/* METHODOLOGY */
+/* CARDS */
 
-routes.post("/methodology/:categoryId" , authMiddleware ,MethodologyController.createMethodology)
-routes.get("/methodology/:categoryId" , authMiddleware ,MethodologyController.getAllMethodoloogy)
+routes.post("/methodology/:categoryId" , authMiddleware ,CardsController.createMethodology)
+routes.get("/methodology/:categoryId" , authMiddleware ,CardsController.getAllMethodoloogy)
 
 module.exports = routes

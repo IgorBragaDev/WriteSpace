@@ -4,13 +4,10 @@ const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
 const compression = require("compression");
-const dataBase = require("./src/database/index");
+require("./src/database/index");
 
 class App {
   constructor() {
-
-    this.database = dataBase;
-    this.start();
     this.server = express();
     this.middlewares();
     this.routes();
@@ -26,16 +23,7 @@ class App {
   routes() {
     this.server.use(routes);
   }
-  async start() {
-
-    try {
-      await this.database.authenticate();
-      console.log("Conexão com o banco de dados estabelecida com sucesso.");
-    } catch (error) {
-      console.error("Erro ao conectar ao banco de dados:", error);
-    }
-
-  }
+  
 }
 
 module.exports = new App().server;

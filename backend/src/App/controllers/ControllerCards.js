@@ -1,4 +1,4 @@
-const Methodology = require("../models/methodology");
+const Card = require("../models/Cards");
 const User = require("../models/User");
 const Category = require("../models/Categories");
 class MethodologyController {
@@ -22,7 +22,7 @@ class MethodologyController {
           .json({ error: "Category not found or does not belong to the user" });
       }
       console.log("cheguei ate antes do create ");
-      const newMethodology = await Methodology.create({
+      const newMethodology = await Card.create({
         text,
         category_id: categoryId,
       });
@@ -38,7 +38,7 @@ class MethodologyController {
   async getAllMethodoloogy(req, res) {
     const categoryId = req.params.categoryId;
     try {
-      const categorMethodology = await Methodology.findAll({
+      const categorMethodology = await Card.findAll({
         where: { category_id: categoryId },
       });
 
