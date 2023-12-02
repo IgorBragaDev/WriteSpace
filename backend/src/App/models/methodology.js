@@ -9,8 +9,8 @@ class Methodology extends Model {
       },
       {
         sequelize,
-        modelName: "Categories",
-        tableName: "categories",
+        modelName: "Methodology",
+        tableName: "methodology",
       }
     );
   }

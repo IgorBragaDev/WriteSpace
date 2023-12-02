@@ -26,5 +26,6 @@ routes.get("/categories",authMiddleware ,CategoriesController.getAllUserCategori
 /* METHODOLOGY */
 
 routes.post("/methodology/:categoryId" , authMiddleware ,MethodologyController.createMethodology)
+routes.get("/methodology/:categoryId" , authMiddleware ,MethodologyController.getAllMethodoloogy)
 
 module.exports = routes

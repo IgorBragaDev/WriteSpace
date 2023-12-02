@@ -1,37 +1,31 @@
-console.log("Início do arquivo connection.js");
-
 const Sequelize = require("sequelize");
 const dbConfig = require("../config/database");
-const connection = new Sequelize(dbConfig);
 const User = require("../App/models/User");
 const Categories = require("../App/models/Categories");
 const Methodology = require("../App/models/methodology");
+const models = [User, Categories, Methodology];
 
-connection.sync();
-User.init(connection);
-Categories.init(connection);
-Methodology.init(connection);
+class Database {
+  constructor() {
+    this.connection = new Sequelize(dbConfig);
+    this.init();
+  }
 
-Categories.associate(connection.models);
-Methodology.associate(connection.models);
-module.exports = connection;
+  async init() {
+    try {
+      models.forEach((element) => {
+        element.init(this.connection);
+        if (element.associate) {
+          element.associate(this.connection.models);
+        }
+      });
+      await this.connection.sync();
+    } catch (error) {
+      console.error("Erro ao conectar ao banco de dados:", error);
+    }
+  }
+}
 
-// const models = [User];
-// class Database {
-//   constructor() {
-//     this.connection = new Sequelize(dbConfig);
-//     this.init();
-//   }
+const database = new Database();
 
-//   async init() {
-//     try {
-//       await this.connection.authenticate();
-//       console.log("Conexão bem-sucedida.");
-//       User.init(this.connection)
-//       await this.connection.sync();
-//     } catch (error) {
-//       console.error("Erro ao conectar ao banco de dados:", error);
-//     }
-//   }
-
-// }
+module.exports = database.connection;
