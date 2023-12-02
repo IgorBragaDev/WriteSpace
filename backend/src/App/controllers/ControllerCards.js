@@ -21,12 +21,10 @@ class MethodologyController {
           .status(400)
           .json({ error: "Category not found or does not belong to the user" });
       }
-      console.log("cheguei ate antes do create ");
       const newMethodology = await Card.create({
         text,
         category_id: categoryId,
       });
-      console.log("cheguei ate depois do create ");
 
       res.status(201).json(newMethodology);
     } catch (error) {

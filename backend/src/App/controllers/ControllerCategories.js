@@ -27,19 +27,16 @@ class ControllerCategories {
     const { title } = req.body;
 
     try {
-      // Verifica se a categoria existe
       const category = await Categories.findByPk(categoryId);
 
       if (!category) {
         return res.status(404).json({ error: "Category not found" });
       }
 
-      // Verifica se o usuário tem permissão para atualizar a categoria
       if (category.user_id !== res.locals.user.id) {
         return res.status(403).json({ error: "Permission denied" });
       }
 
-      // Atualiza o título da categoria
       await category.update({ title });
 
       res.status(200).json(category);
