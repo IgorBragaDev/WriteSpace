@@ -1,18 +1,25 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Input from "./src/components/Input/input";
 import logo from "./src/images/png/logo.png";
 import ButtonForms from "./src/components/button/button";
-import { ScaledSheet, s, setGlobalMetrics } from "react-native-size-matters";
 import { useState } from "react";
 import InputPassword from "./src/components/inputPassword/inputPassword";
-
+import { useForm, Controller } from "react-hook-form";
 export default function App() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const handleTermsToggle = () => {
     setTermsAccepted(!termsAccepted);
   };
 
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({});
+
+  const submit = (data) => {
+    console.log(data);
+  };
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -20,32 +27,57 @@ export default function App() {
         <Text style={styles.textCircularBlue}>Cadastro</Text>
       </View>
       <View style={styles.inputArea}>
-        <Input
-          placeholder={"Insira seu nome"}
-          label={"Name"}
-          borderWidth={1}
-          borderColor={"#D7D7D7"}
-          height={45}
-          borderRadius={10}
-        />
-        <Input
-          placeholder={"Insira seu e-mail"}
-          label={"E-mail"}
-          borderWidth={1}
-          borderColor={"#D7D7D7"}
-          height={45}
-          borderRadius={10}
-        />
-        <InputPassword
-          placeholder={"Insira sua senha"}
-          label={"Insira sua senha "}
-          borderWidth={1}
-          borderColor={"#D7D7D7"}
-          height={45}
-          borderRadius={10}
+        <Controller
+          control={control}
+          name="name"
+          render={({ field: { onChange, value } }) => (
+            <Input
+              placeholder={"Insira seu nome"}
+              label={"Name"}
+              borderWidth={1}
+              borderColor={"#D7D7D7"}
+              height={50}
+              borderRadius={10}
+              onChangeText={onChange}
+              valueInput={value}
+            />
+          )}
         />
 
-        <InputPassword
+        <Controller
+          control={control}
+          name="email"
+          render={({ field: { onChange, value } }) => (
+            <Input
+              placeholder={"Insira seu e-mail"}
+              label={"E-mail"}
+              borderWidth={1}
+              borderColor={"#D7D7D7"}
+              height={50}
+              borderRadius={10}
+              onChangeText={onChange}
+              valueInput={value}
+            />
+          )}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, value } }) => (
+            <InputPassword
+              placeholder={"Insira sua senha"}
+              label={"Insira sua senha "}
+              borderWidth={1}
+              borderColor={"#D7D7D7"}
+              height={45}
+              borderRadius={10}
+              onChange={onChange}
+              value={value}
+            />
+          )}
+        />
+         <InputPassword
           placeholder={"Confirme sua senha"}
           label={"Confirme sua senha "}
           borderWidth={1}
@@ -69,7 +101,6 @@ export default function App() {
           </Text>
         </View>
       </View>
-      <Text>Ja tenho uma conta </Text>
       <ButtonForms
         buttonText={"Cadastrar"}
         buttonBoxAlign={"center"}
@@ -85,8 +116,9 @@ export default function App() {
         buttonTextFontSize={18}
         buttonTextFontWeigth={"600"}
         buttonTextColor={"#FFF"}
-
+        onPress={handleSubmit(submit)}
       />
+      <Text>Ja tenho uma conta LOGAR</Text>
     </View>
   );
 }

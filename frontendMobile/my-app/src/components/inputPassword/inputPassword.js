@@ -16,6 +16,8 @@ const InputPassword = ({
   borderColor,
   height,
   borderRadius,
+  value,
+  onChange
 }) => {
   const [hidepass, setHidePass] = useState(true);
   const styles = StyleSheet.create({
@@ -57,6 +59,8 @@ const InputPassword = ({
           placeholder={placeholder}
           keyboardType={type}
           secureTextEntry={hidepass}
+          value={value}
+          onChangeText={onChange}
         />
         <TouchableOpacity
           style={styles.icons}

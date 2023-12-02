@@ -9,6 +9,8 @@ const Input = ({
   borderColor,
   height,
   borderRadius,
+  onChangeText,
+  valueInput
 }) => {
   const styles = StyleSheet.create({
     container: {},
@@ -25,6 +27,8 @@ const Input = ({
       borderWidth: borderWidth,
       height: height,
       borderRadius: borderRadius,
+      padding: 3,
+
     },
   });
 
@@ -34,7 +38,8 @@ const Input = ({
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        keyboardType={type === "email" ? "email-address" : "default"}
+        onChangeText={onChangeText}
+        value={valueInput}
       />
     </View>
   );

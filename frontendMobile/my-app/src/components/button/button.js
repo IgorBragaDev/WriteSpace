@@ -15,6 +15,7 @@ const ButtonForms = ({
   buttonTextFontSize,
   buttonTextFontWeigth,
   buttonTextColor,
+  onPress
 }) => {
   const styles = StyleSheet.create({
     buttonBox: {
@@ -40,7 +41,7 @@ const ButtonForms = ({
 
   return (
     <View style={styles.buttonBox}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
     </View>
