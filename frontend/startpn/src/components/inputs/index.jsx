@@ -14,7 +14,8 @@ const Input = ({
   inputBorderRadius,
   inputBorder,
   labeltypography,
-  placeholdertypography
+  placeholdertypography,
+  handle
 }) => {
   const styledDiv = {
     display: display,
@@ -40,6 +41,7 @@ const Input = ({
           id={id}
           placeholder={placeholder}
           style={styledInput}
+          {...handle}
         />
       </div>
     </>

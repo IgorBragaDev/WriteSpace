@@ -3,8 +3,25 @@ import Input from "../../components/inputs";
 import Button from "../../components/button";
 import SteveJobs from "../../images/png/stevejobs.png";
 import Ondas from "../../images/png/ondas.png";
-import "./login.css"
+import "./login.css";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { SessionsContext } from "../../context/sessionsContext";
+import { loginSchema } from "../../schemas/session.login.schema";
 const LoginPage = () => {
+  // const {sessionsLogin} = useContext(SessionsContext)
+  const sessionsLogin = (e) => {
+    e.preventDefault();
+    console.log("click");
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(loginSchema) });
+
   return (
     <>
       <div className="resposiveContainer">
@@ -13,13 +30,17 @@ const LoginPage = () => {
             <Logo width={"190px"} heigth={"47.739px"} />
             <h1 className="text_circular_color_blue">Dados de acesso</h1>
           </div>
-          <form>
+          <form
+            onSubmit={(e) => 
+              sessionsLogin(e)
+            }
+          >
             <div>
               <Input
                 htmlFor={"email"}
                 id={"email"}
                 type={"text"}
-                name={"E-mail"}
+                name={"email"}
                 placeholder={"Insira seu e-mail"}
                 display={"grid"}
                 grid={"auto auto"}
@@ -32,13 +53,14 @@ const LoginPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                handle={register}
               />
             </div>
             <Input
               htmlFor={"password"}
               id={"password"}
               type={"text"}
-              name={"Senha"}
+              name={"senha"}
               placeholder={"Insira sua senha"}
               display={"grid"}
               grid={"auto auto"}
@@ -51,9 +73,9 @@ const LoginPage = () => {
               inputBorder={"1px solid #D7D7D7"}
               labeltypography="text_circular_label"
               placeholdertypography="text_circular_placeholder"
+              handle={register}
             />
-             <Button
-              type={"text"}
+            <Button
               buttonText={"Entrar"}
               width={"100%"}
               height={"48px"}
@@ -68,7 +90,7 @@ const LoginPage = () => {
           </form>
         </div>
         <div className="steveContainerLogin">
-          <img className="steveImageLogin" src={SteveJobs}/>
+          <img className="steveImageLogin" src={SteveJobs} />
           <img className="wavesImageLogin" src={Ondas}></img>
         </div>
       </div>
