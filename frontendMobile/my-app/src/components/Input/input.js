@@ -8,28 +8,29 @@ const Input = ({
   borderWidth,
   borderColor,
   height,
-  borderRadius
+  borderRadius,
 }) => {
   const styles = StyleSheet.create({
-    container: {
-      flexDirection: "column",
-      marginVertical: 10,
-    },
+    container: {},
     label: {
-      // Adicione outros estilos de texto conforme necessário para o React Native
+      marginTop: 10,
+      marginBottom: 10,
+      fontSize: 14,
+      fontWeight: "400",
+      letterSpacing: 0.202,
     },
     input: {
       backgroundColor: backgroundColor,
       borderColor: borderColor,
       borderWidth: borderWidth,
       height: height,
-      borderRadius: borderRadius
+      borderRadius: borderRadius,
     },
   });
 
   return (
     <View>
-      <Text>{label}</Text>
+      <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.input}
         placeholder={placeholder}
