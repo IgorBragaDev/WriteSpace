@@ -47,6 +47,7 @@ const RegisterPage = () => {
                 inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
+                marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("name")}
@@ -67,6 +68,7 @@ const RegisterPage = () => {
                 inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
+                marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
@@ -87,6 +89,7 @@ const RegisterPage = () => {
                 inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
+                marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("password")}

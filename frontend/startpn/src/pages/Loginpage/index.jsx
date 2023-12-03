@@ -45,6 +45,7 @@ const LoginPage = () => {
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
+                marginBottomDivInputsLabel={"10px"}
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
               />

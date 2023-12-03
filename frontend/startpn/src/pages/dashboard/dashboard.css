@@ -35,14 +35,14 @@
   position: absolute;
   top: 0;
   left: -1000px;
-  transition: left 0.3s ease; 
+  transition: left 0.3s ease;
 }
 
 .sideMenuBar.open {
   left: 0;
 }
 
-.sideMenuItensContainer{
+.sideMenuItensContainer {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -55,11 +55,11 @@
   gap: 10px;
 }
 
-.DashContainer{
-  padding: 16px 20px ;
+.DashContainer {
+  padding: 16px 20px;
 }
 
-.navigationToCreateCard{
+.navigationToCreateCard {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -69,14 +69,37 @@
   border: 1px solid blue;
 }
 
-.ellipseButton{
-  border: 1px solid red;
-  background-color: red;
+.ellipseButton {
   position: relative;
 }
 
-.ellipseCircle{
+.ellipseCircle {
+  position: relative;
+}
+
+.cornerContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 16px;
+}
+
+.ellipseContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.plusSignalContainer {
   position: absolute;
   top: 50%;
-  left: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }

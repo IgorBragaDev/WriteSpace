@@ -35,6 +35,15 @@ const DashBoard = () => {
         </header>
         <div className="DashContainer">
           <h1 className="text_circular_color_blue_bold">Playbooks</h1>
+          <div>
+            <div>
+              <h1>Categorias</h1>
+                  
+            </div>
+            <div>
+              Cards
+            </div>
+          </div>
           <div className={`sideMenuBar ${openSideMenu ? "open" : ""}`}>
             <Logo width={"153px"} heigth={"39px"} />
             <ul className="text_circular_side_menu_color_grey sideMenuItensContainer ">
@@ -64,13 +73,19 @@ const DashBoard = () => {
               Sair
             </h3>
           </div>
-          <div>
-            <Link>
-              <div className="ellipseButton">
-                <img  src={elipse} />
-                <img className="ellipseCircle" src={plusSignal}></img>
+          <div className="cornerContainer">
+            <div className="ellipseButton">
+              <div className="ellipseContainer">
+                <img src={elipse} alt="Ellipse" />
+                <div className="plusSignalContainer">
+                  <img
+                    className="ellipseCircle"
+                    src={plusSignal}
+                    alt="Plus Signal"
+                  />
+                </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

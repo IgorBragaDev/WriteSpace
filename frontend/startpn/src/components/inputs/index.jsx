@@ -16,12 +16,14 @@ const Input = ({
   labeltypography,
   placeholdertypography,
   handle,
+  marginBottomDivInputsLabel
   
 }) => {
   const styledDiv = {
     display: display,
     gridtemplaterows: grid,
     gap: gap,
+    marginBottom: marginBottomDivInputsLabel
   };
   const styledInput = {
     height: inputHeight,
@@ -34,9 +36,11 @@ const Input = ({
   return (
     <>
       <div style={styledDiv}>
-        <label className={labeltypography} htmlFor={htmlFor}>{name}</label>
+        <label className={labeltypography} htmlFor={htmlFor}>
+          {name}
+        </label>
         <input
-        className={placeholdertypography}
+          className={placeholdertypography}
           type={type}
           name={name}
           id={id}
