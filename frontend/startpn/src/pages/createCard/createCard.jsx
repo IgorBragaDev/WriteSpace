@@ -3,7 +3,6 @@ import Button from "../../components/button";
 import Input from "../../components/inputs";
 import navi from "../../images/svg/seta.svg";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { CategoriesContext } from "../../context/categoriesContext";
 import "./createCard.css";
