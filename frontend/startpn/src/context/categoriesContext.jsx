@@ -16,7 +16,7 @@ export const CategoriesProvider = ({ children }) => {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(response)
+        console.log(response);
         setCategories(response.data);
       } catch (error) {
         console.log(error);
@@ -27,8 +27,22 @@ export const CategoriesProvider = ({ children }) => {
       getUserCategories();
     }
   }, [userToken]);
+
+  const addCategories = async (data) => {
+    try {
+      const response = await api.post("categories", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <CategoriesContext.Provider value={{ categories }}>
+    <CategoriesContext.Provider value={{ categories, addCategories }}>
       {children}
     </CategoriesContext.Provider>
   );

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import Logo from "../../components/logo";
 import dropMenu from "../../images/png/Frame.png";
 import userIcon from "../../images/png/Bitmap.png";
@@ -13,6 +12,7 @@ import elipse from "../../images/svg/ellipse.svg";
 import plusSignal from "../../images/svg/mais.svg";
 import "./dashboard.css";
 import { CategoriesContext } from "../../context/categoriesContext";
+import AddCategoriesModal from "../../components/addCategoriesModal/addCateforiesModal";
 const DashBoard = () => {
   const { categories } = useContext(CategoriesContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -101,6 +101,7 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
+        {/* <AddCategoriesModal/> */}
       </div>
     </>
   );
