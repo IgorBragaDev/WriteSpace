@@ -3,18 +3,15 @@ import Input from "../../components/inputs";
 import Button from "../../components/button";
 import SteveJobs from "../../images/png/stevejobs.png";
 import Ondas from "../../images/png/ondas.png";
-import "./login.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { SessionsContext } from "../../context/sessionsContext";
 import { loginSchema } from "../../schemas/session.login.schema";
+import "./login.css";
+
 const LoginPage = () => {
-  // const {sessionsLogin} = useContext(SessionsContext)
-  const sessionsLogin = (e) => {
-    e.preventDefault();
-    console.log("click");
-  };
+  const { sessionsLogin } = useContext(SessionsContext);
 
   const {
     register,
@@ -30,11 +27,7 @@ const LoginPage = () => {
             <Logo width={"190px"} heigth={"47.739px"} />
             <h1 className="text_circular_color_blue">Dados de acesso</h1>
           </div>
-          <form
-            onSubmit={(e) => 
-              sessionsLogin(e)
-            }
-          >
+          <form onSubmit={handleSubmit(sessionsLogin)}>
             <div>
               <Input
                 htmlFor={"email"}
@@ -53,9 +46,10 @@ const LoginPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
-                handle={register}
+                handle={register("email")}
               />
             </div>
+            {errors.email && <p>{errors.email.message}</p>}
             <Input
               htmlFor={"password"}
               id={"password"}
@@ -73,8 +67,9 @@ const LoginPage = () => {
               inputBorder={"1px solid #D7D7D7"}
               labeltypography="text_circular_label"
               placeholdertypography="text_circular_placeholder"
-              handle={register}
+              handle={register("password")}
             />
+            {errors.password && <p>{errors.password.message}</p>}
             <Button
               buttonText={"Entrar"}
               width={"100%"}

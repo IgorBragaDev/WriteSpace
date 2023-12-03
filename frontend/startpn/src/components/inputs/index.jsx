@@ -15,7 +15,8 @@ const Input = ({
   inputBorder,
   labeltypography,
   placeholdertypography,
-  handle
+  handle,
+  
 }) => {
   const styledDiv = {
     display: display,
