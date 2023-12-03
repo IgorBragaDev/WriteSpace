@@ -12,7 +12,7 @@ import elipse from "../../images/svg/ellipse.svg";
 import plusSignal from "../../images/svg/mais.svg";
 import "./dashboard.css";
 import { CategoriesContext } from "../../context/categoriesContext";
-import AddCategoriesModal from "../../components/addCategoriesModal/addCateforiesModal";
+import AddCategoriesModal from "../../components/addCategoriesModal";
 const DashBoard = () => {
   const { categories } = useContext(CategoriesContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -101,7 +101,7 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        {/* <AddCategoriesModal/> */}
+        <AddCategoriesModal/>
       </div>
     </>
   );
