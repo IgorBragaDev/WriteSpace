@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { FaCheck } from "react-icons/fa";
 const Checkbox = ({
   display,
   alignItems,
@@ -9,12 +9,12 @@ const Checkbox = ({
   inputHeight,
   inputBorderRadius,
   inputBorder,
+  
 }) => {
   const [isChecked, setChecked] = useState(true);
 
-  const handleCheckboxChange = () => {  
+  const handleCheckboxChange = () => {
     setChecked(!isChecked);
-
   };
   const checkBoxContainer = {
     display: display,
@@ -29,15 +29,27 @@ const Checkbox = ({
     borderRadius: inputBorderRadius,
     border: inputBorder,
   };
+  const checkBoxButton = {
+    border: "2px solid rgb(71, 110, 230)",
+    cursor: "pointer",
+    height: "30px",
+    width: "40px",
+    borderRadius: "10px",
+    backgroundColor: "transparent",
+    display : "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    
+  };
   return (
     <div style={checkBoxContainer}>
-      <input
-        type="checkbox"
+      <p
         id="myCheckbox"
-        checked={isChecked}
-        onChange={handleCheckboxChange}
-        style={checkBoxInput}
-      />
+        onClick={handleCheckboxChange}
+        style={checkBoxButton}
+      >
+        {isChecked && <FaCheck />}
+      </p>
       <label htmlFor="myCheckbox">
         Ao clicar nesse botão, eu concordo com os temos de uso e privacidade da
         nossa empresa

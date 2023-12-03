@@ -52,7 +52,9 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("name")}
               />
-              {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text_circular_small_red">{errors.name.message}</p>
+              )}
               <Input
                 htmlFor={"email"}
                 id={"email"}
@@ -73,7 +75,11 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text_circular_small_red">
+                  {errors.email.message}
+                </p>
+              )}
               <Input
                 htmlFor={"password"}
                 id={"password"}
@@ -94,7 +100,11 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("password")}
               />
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && (
+                <p className="text_circular_small_red">
+                  {errors.password.message}
+                </p>
+              )}
               <Input
                 htmlFor={"confirmpassword"}
                 id={"confirmpassword"}

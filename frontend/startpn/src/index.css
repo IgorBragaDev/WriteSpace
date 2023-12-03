@@ -51,12 +51,19 @@
 .text_circular_small_blue {
   color: #476ee6;
   text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
+}
+.text_circular_small_red {
+  color: #ff6666;
+  max-width: 300px;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
 }
 .text_circular_small_blue_categories {
   color: #476ee6;
