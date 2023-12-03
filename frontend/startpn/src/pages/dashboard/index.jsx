@@ -14,7 +14,7 @@ import "./dashboard.css";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
 const DashBoard = () => {
-  const { categories } = useContext(CategoriesContext);
+  const { categories, isModalOpen ,openModal } = useContext(CategoriesContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -51,7 +51,7 @@ const DashBoard = () => {
                   </li>
                 ))}
               </ul>
-              <p className="text_circular_small_blue_categories_bold">
+              <p onClick={openModal} className="text_circular_small_blue_categories_bold">
                 + Adicionar outra categoria
               </p>
             </div>
@@ -101,7 +101,7 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        <AddCategoriesModal/>
+        {isModalOpen ?  <AddCategoriesModal /> : null}
       </div>
     </>
   );
