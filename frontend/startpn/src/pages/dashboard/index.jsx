@@ -14,7 +14,8 @@ import "./dashboard.css";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
 const DashBoard = () => {
-  const { categories, isModalOpen ,openModal } = useContext(CategoriesContext);
+  const { categories, isModalOpen, openModal, getCategoriesCards, cards } =
+    useContext(CategoriesContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -36,7 +37,9 @@ const DashBoard = () => {
           </div>
         </header>
         <div className="DashContainer">
-          <h1 className="text_circular_color_blue_bold">Playbooks</h1>
+          <h1 className="text_circular_color_blue_bold playbookTitle">
+            Playbooks
+          </h1>
           <div>
             <div className="categoriesBox">
               <h1 className="text_circular_label categoriesBoxTitle ">
@@ -45,17 +48,36 @@ const DashBoard = () => {
               <ul>
                 {categories.map((categories) => (
                   <li key={categories.id}>
-                    <p className="text_circular_small_blue_categories">
+                    <p
+                      className="text_circular_small_blue_categories"
+                      onClick={() => getCategoriesCards(categories.id)}
+                    >
                       {categories.title}
                     </p>
                   </li>
                 ))}
               </ul>
-              <p onClick={openModal} className="text_circular_small_blue_categories_bold">
+              <p
+                onClick={openModal}
+                className="text_circular_small_blue_categories_bold"
+              >
                 + Adicionar outra categoria
               </p>
             </div>
-            <div>Cards</div>
+            <div>
+              <h1>Cards</h1>
+              <ul>
+              {cards.map((card=>(
+                <li key={card.id} className="cardContainer">
+                  <div className="cardBoxTitle">
+                  <h1 className="text_circular_color_black_big_card">Nossa metodologia</h1>
+                  <button className="text_circular_color_white_title_card">Editar</button>
+                  </div>
+                  <p className="text_circular_color_black_card_content">{card.text}</p>
+                </li>
+              )))}
+              </ul>
+            </div>
           </div>
           <div className={`sideMenuBar ${openSideMenu ? "open" : ""}`}>
             <Logo width={"153px"} heigth={"39px"} />
@@ -101,7 +123,7 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
-        {isModalOpen ?  <AddCategoriesModal /> : null}
+        {isModalOpen ? <AddCategoriesModal /> : null}
       </div>
     </>
   );

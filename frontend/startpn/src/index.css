@@ -67,7 +67,7 @@
   line-height: normal;
 }
 .text_circular_small_blue_categories_bold {
-  color: #476EE6;
+  color: #476ee6;
   font-family: Poppins;
   font-size: 15px;
   font-style: normal;
@@ -78,7 +78,6 @@
 .text_circular_button_color_FFF {
   color: #fff;
   text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -92,5 +91,34 @@
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
+  line-height: normal;
+}
+
+.text_circular_color_black_big_card {
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text_circular_color_white_title_card {
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+}
+
+.text_circular_color_black_card_content {
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
   line-height: normal;
 }

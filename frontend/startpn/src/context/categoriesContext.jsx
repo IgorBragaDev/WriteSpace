@@ -6,6 +6,7 @@ export const CategoriesContext = createContext({});
 export const CategoriesProvider = ({ children }) => {
   const userToken = localStorage.getItem("authToken");
   const [categories, setCategories] = useState([]);
+  const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -63,9 +64,31 @@ export const CategoriesProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  const getCategoriesCards = async (id) => {
+    try {
+      const response = await api.get(`methodology/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      setCards(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <CategoriesContext.Provider
-      value={{ categories, addCategories, openModal, closeModal, isModalOpen }}
+      value={{
+        categories,
+        addCategories,
+        openModal,
+        closeModal,
+        isModalOpen,
+        getCategoriesCards,
+        cards,
+      }}
     >
       {children}
     </CategoriesContext.Provider>
