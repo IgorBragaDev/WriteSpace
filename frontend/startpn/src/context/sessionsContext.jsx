@@ -32,8 +32,12 @@ export const SessionsProvider = ({ children }) => {
       toast.error(`${error.response.data.error}`, { autoClose: 2000 });
     }
   };
+  const sessionsLogout = async () => {
+    window.localStorage.clear()
+    navigate("/")
+  }
   return (
-    <SessionsContext.Provider value={{ sessionsLogin, sessionsRegister }}>
+    <SessionsContext.Provider value={{ sessionsLogin, sessionsRegister ,sessionsLogout}}>
       {children}
     </SessionsContext.Provider>
   );

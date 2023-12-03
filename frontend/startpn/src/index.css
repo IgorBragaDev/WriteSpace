@@ -122,3 +122,13 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.text_circular_color_blue_title {
+  color: #476ee6;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24.286px;
+  letter-spacing: 0.101px;
+}

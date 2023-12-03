@@ -9,14 +9,18 @@ import chessIcon from "../../images/svg/Vector.svg";
 import userIconMenu from "../../images/svg/user-icon.svg";
 import exitIcon from "../../images/svg/logout.svg";
 import elipse from "../../images/svg/ellipse.svg";
+import vector2 from "../../images/svg/vector2.svg"
 import plusSignal from "../../images/svg/mais.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
+import { SessionsContext } from "../../context/sessionsContext";
 import "./dashboard.css";
 const DashBoard = () => {
   const { categories, isModalOpen, openModal, getCategoriesCards, cards } =
     useContext(CategoriesContext);
+
+  const { sessionsLogout } = useContext(SessionsContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -37,36 +41,45 @@ const DashBoard = () => {
             <img src={userIcon} alt="" />
           </div>
         </header>
-        <div className="DashContainer">
-          <h1 className="text_circular_color_blue_bold playbookTitle">
-            Playbooks
-          </h1>
-          <div>
-            <div className="categoriesBox">
-              <h1 className="text_circular_label categoriesBoxTitle ">
-                Categorias
-              </h1>
-              <ul>
-                {categories.map((categories) => (
-                  <li key={categories.id}>
-                    <p
-                      className="text_circular_small_blue_categories"
-                      onClick={() => getCategoriesCards(categories.id)}
-                    >
-                      {categories.title}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-              <p
-                onClick={openModal}
-                className="text_circular_small_blue_categories_bold"
-              >
-                + Adicionar outra categoria
-              </p>
+        <div className="responsiveContainerDashboard">
+          <div className="DashContainer">
+            <h1 className="text_circular_color_blue_bold playbookTitle">
+              Playbooks
+            </h1>
+            <div className="headerFromWebVersion">
+              <h1 className="text_circular_color_blue_title">Playbooks</h1>
+              <div className="headerFromWebVersionDiv">
+                <img src={userIcon} alt="" />
+                <p className="text_circular_color_black_card_content">Igor Braga</p>
+                <img src={vector2} alt="" />
+              </div>
             </div>
-            <div>
-              <ul>
+            <div className="responsiveContainerCategoriesCards">
+              <div className="categoriesBox">
+                <h1 className="text_circular_label categoriesBoxTitle ">
+                  Categorias
+                </h1>
+                <ul>
+                  {categories.map((categories) => (
+                    <li key={categories.id}>
+                      <p
+                        className="text_circular_small_blue_categories"
+                        onClick={() => getCategoriesCards(categories.id)}
+                      >
+                        {categories.title}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+                <p
+                  onClick={openModal}
+                  className="text_circular_small_blue_categories_bold"
+                >
+                  + Adicionar outra categoria
+                </p>
+              </div>
+
+              <ul className="cardsUL">
                 {cards.map((card) => (
                   <li key={card.id} className="cardContainer">
                     <div className="cardBoxTitle">
@@ -85,8 +98,17 @@ const DashBoard = () => {
               </ul>
             </div>
           </div>
+
           <div className={`sideMenuBar ${openSideMenu ? "open" : ""}`}>
-            <Logo width={"153px"} heigth={"39px"} />
+            <div className="sideMenuBarCloseButtonDiv ">
+              <Logo width={"153px"} heigth={"39px"} />
+              <button
+                className="text_circular_small_blue_categories_bold"
+                onClick={() => setOpenSideMenu(!openSideMenu)}
+              >
+                x
+              </button>
+            </div>
             <ul className="text_circular_side_menu_color_grey sideMenuItensContainer ">
               <li className="sideMenuItens">
                 <img src={chessIcon} alt="" />
@@ -109,7 +131,10 @@ const DashBoard = () => {
                 Minha conta
               </li>
             </ul>
-            <h3 className="sideMenuItens text_circular_side_menu_color_grey">
+            <h3
+              className="sideMenuItens text_circular_side_menu_color_grey"
+              onClick={() => sessionsLogout()}
+            >
               <img src={exitIcon} alt="" />
               Sair
             </h3>
