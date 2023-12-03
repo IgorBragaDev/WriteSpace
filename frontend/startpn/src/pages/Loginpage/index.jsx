@@ -54,7 +54,7 @@ const LoginPage = () => {
             <Input
               htmlFor={"password"}
               id={"password"}
-              type={"text"}
+              type={"password"}
               name={"senha"}
               placeholder={"Insira sua senha"}
               display={"grid"}
