@@ -6,6 +6,7 @@ class Card extends Model {
     super.init(
       {
         text: DataTypes.STRING,
+        name: DataTypes.STRING
       },
       {
         sequelize,
