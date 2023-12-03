@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Category = require("../models/Categories");
 class MethodologyController {
   async createMethodology(req, res) {
-    const { text } = req.body;
+    const { text,name } = req.body;
     const userId = res.locals.user.id;
     const categoryId = req.params.categoryId;
 
@@ -24,6 +24,7 @@ class MethodologyController {
       const newMethodology = await Card.create({
         text,
         category_id: categoryId,
+        name
       });
 
       res.status(201).json(newMethodology);
