@@ -16,14 +16,15 @@ const Input = ({
   labeltypography,
   placeholdertypography,
   handle,
-  marginBottomDivInputsLabel
-  
+  marginBottomDivInputsLabel,
+  flexDirection,
 }) => {
   const styledDiv = {
     display: display,
     gridtemplaterows: grid,
     gap: gap,
-    marginBottom: marginBottomDivInputsLabel
+    marginBottom: marginBottomDivInputsLabel,
+    flexDirection: flexDirection,
   };
   const styledInput = {
     height: inputHeight,

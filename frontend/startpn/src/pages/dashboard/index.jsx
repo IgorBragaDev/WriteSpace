@@ -10,9 +10,10 @@ import userIconMenu from "../../images/svg/user-icon.svg";
 import exitIcon from "../../images/svg/logout.svg";
 import elipse from "../../images/svg/ellipse.svg";
 import plusSignal from "../../images/svg/mais.svg";
-import "./dashboard.css";
+import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
+import "./dashboard.css";
 const DashBoard = () => {
   const { categories, isModalOpen, openModal, getCategoriesCards, cards } =
     useContext(CategoriesContext);
@@ -65,17 +66,22 @@ const DashBoard = () => {
               </p>
             </div>
             <div>
-              <h1>Cards</h1>
               <ul>
-              {cards.map((card=>(
-                <li key={card.id} className="cardContainer">
-                  <div className="cardBoxTitle">
-                  <h1 className="text_circular_color_black_big_card">Nossa metodologia</h1>
-                  <button className="text_circular_color_white_title_card">Editar</button>
-                  </div>
-                  <p className="text_circular_color_black_card_content">{card.text}</p>
-                </li>
-              )))}
+                {cards.map((card) => (
+                  <li key={card.id} className="cardContainer">
+                    <div className="cardBoxTitle">
+                      <h1 className="text_circular_color_black_big_card">
+                        Nossa metodologia
+                      </h1>
+                      <button className="text_circular_color_white_title_card">
+                        Editar
+                      </button>
+                    </div>
+                    <p className="text_circular_color_black_card_content">
+                      {card.text}
+                    </p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -111,14 +117,16 @@ const DashBoard = () => {
           <div className="cornerContainer">
             <div className="ellipseButton">
               <div className="ellipseContainer">
-                <img src={elipse} alt="Ellipse" />
-                <div className="plusSignalContainer">
-                  <img
-                    className="ellipseCircle"
-                    src={plusSignal}
-                    alt="Plus Signal"
-                  />
-                </div>
+                <Link to="/createcard">
+                  <img src={elipse} alt="Ellipse" />
+                  <div className="plusSignalContainer">
+                    <img
+                      className="ellipseCircle"
+                      src={plusSignal}
+                      alt="Plus Signal"
+                    />
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

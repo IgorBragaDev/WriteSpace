@@ -58,7 +58,7 @@
 .DashContainer {
   padding: 16px 20px;
 }
-.playbookTitle{
+.playbookTitle {
   margin-bottom: 20px;
   margin-top: 15px;
 }
@@ -127,14 +127,14 @@ img {
   padding-bottom: 6px;
 }
 
-.cardContainer{
+.cardContainer {
   border: 1px solid #d7d7d7;
   border-radius: 10px;
   height: 200px;
   margin-top: 30px;
   padding: 8px 6px;
 }
-.cardBoxTitle{
+.cardBoxTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,10 +142,10 @@ img {
   padding-bottom: 9px;
 }
 
-.cardBoxTitle button{
+.cardBoxTitle button {
   border-radius: 60px;
-  background: #476EE6;
+  background: #476ee6;
   border: none;
   padding: 10px;
-  
 }
+

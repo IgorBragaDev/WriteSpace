@@ -23,7 +23,6 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(response);
       setCategories(response.data);
     } catch (error) {
       console.log(error);
@@ -38,7 +37,6 @@ export const CategoriesProvider = ({ children }) => {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log(response);
         setCategories(response.data);
       } catch (error) {
         console.log(error);
@@ -78,6 +76,22 @@ export const CategoriesProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  const createCard = async (data) => {
+    const { id_category, ...rest } = data;
+   
+    try {
+      const response = await api.post(`methodology/${id_category}`, rest, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <CategoriesContext.Provider
       value={{
@@ -88,6 +102,7 @@ export const CategoriesProvider = ({ children }) => {
         isModalOpen,
         getCategoriesCards,
         cards,
+        createCard,
       }}
     >
       {children}
