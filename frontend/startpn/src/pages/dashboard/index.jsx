@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../components/logo";
 import dropMenu from "../../images/png/Frame.png";
@@ -12,7 +12,9 @@ import exitIcon from "../../images/svg/logout.svg";
 import elipse from "../../images/svg/ellipse.svg";
 import plusSignal from "../../images/svg/mais.svg";
 import "./dashboard.css";
+import { CategoriesContext } from "../../context/categoriesContext";
 const DashBoard = () => {
+  const { categories } = useContext(CategoriesContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -36,13 +38,24 @@ const DashBoard = () => {
         <div className="DashContainer">
           <h1 className="text_circular_color_blue_bold">Playbooks</h1>
           <div>
-            <div>
-              <h1>Categorias</h1>
-                  
+            <div className="categoriesBox">
+              <h1 className="text_circular_label categoriesBoxTitle ">
+                Categorias
+              </h1>
+              <ul>
+                {categories.map((categories) => (
+                  <li key={categories.id}>
+                    <p className="text_circular_small_blue_categories">
+                      {categories.title}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <p className="text_circular_small_blue_categories_bold">
+                + Adicionar outra categoria
+              </p>
             </div>
-            <div>
-              Cards
-            </div>
+            <div>Cards</div>
           </div>
           <div className={`sideMenuBar ${openSideMenu ? "open" : ""}`}>
             <Logo width={"153px"} heigth={"39px"} />
