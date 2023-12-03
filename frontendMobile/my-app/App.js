@@ -5,6 +5,7 @@ import ButtonForms from "./src/components/button/button";
 import { useState } from "react";
 import InputPassword from "./src/components/inputPassword/inputPassword";
 import { useForm, Controller } from "react-hook-form";
+import api from "./src/services/api";
 export default function App() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const handleTermsToggle = () => {
@@ -17,8 +18,23 @@ export default function App() {
     formState: { errors },
   } = useForm({});
 
+  
+  const register = async (data) => {
+    try {
+      await api.post("sessions", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("conta criada");
+    } catch (error) {
+      console.log("deu erro ", error);
+    }
+  };
+  
   const submit = (data) => {
-    console.log(data);
+    
+    register(data)
   };
   return (
     <View style={styles.container}>
@@ -77,7 +93,7 @@ export default function App() {
             />
           )}
         />
-         <InputPassword
+        <InputPassword
           placeholder={"Confirme sua senha"}
           label={"Confirme sua senha "}
           borderWidth={1}
