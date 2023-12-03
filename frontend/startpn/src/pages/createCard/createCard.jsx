@@ -40,7 +40,7 @@ const CreateCard = () => {
             inputWidth={"100%"}
             inputHeight={"40px"}
             type={"text"}
-            handle={register("title")}
+            handle={register("name")}
           />
           <div className="categoriesSelectBox">
             <label htmlFor="categorie" className="text_circular_label">

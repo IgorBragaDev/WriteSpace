@@ -71,7 +71,7 @@ const DashBoard = () => {
                   <li key={card.id} className="cardContainer">
                     <div className="cardBoxTitle">
                       <h1 className="text_circular_color_black_big_card">
-                        Nossa metodologia
+                        {card.name}
                       </h1>
                       <button className="text_circular_color_white_title_card">
                         Editar

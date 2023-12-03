@@ -79,7 +79,6 @@ export const CategoriesProvider = ({ children }) => {
 
   const createCard = async (data) => {
     const { id_category, ...rest } = data;
-   
     try {
       const response = await api.post(`methodology/${id_category}`, rest, {
         headers: {
@@ -87,7 +86,6 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      console.log(response)
     } catch (error) {
       console.log(error);
     }
