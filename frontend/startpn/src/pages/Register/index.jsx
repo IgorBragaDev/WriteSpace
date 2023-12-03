@@ -4,8 +4,20 @@ import Input from "../../components/inputs";
 import Logo from "../../components/logo";
 import SteveJobs from "../../images/png/stevejobs.png";
 import Ondas from "../../images/png/ondas.png";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import "./register.css";
+import { registerSchema } from "../../schemas/session.register.shema";
+import { useContext } from "react";
+import { SessionsContext } from "../../context/sessionsContext";
 const RegisterPage = () => {
+  const { sessionsRegister } = useContext(SessionsContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(registerSchema) });
   return (
     <>
       <div className="resposiveContainer">
@@ -14,7 +26,10 @@ const RegisterPage = () => {
             <Logo width={"190px"} heigth={"47.739px"} />
             <h1 className="text_circular_color_blue">Cadastro</h1>
           </div>
-          <form className="formRegister">
+          <form
+            className="formRegister"
+            onSubmit={handleSubmit(sessionsRegister)}
+          >
             <div className="inputsContainer">
               <Input
                 htmlFor={"name"}
@@ -33,7 +48,9 @@ const RegisterPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                handle={register("name")}
               />
+               {errors.name && <p>{errors.name.message}</p>}
               <Input
                 htmlFor={"email"}
                 id={"email"}
@@ -51,7 +68,9 @@ const RegisterPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                handle={register("email")}
               />
+               {errors.email && <p>{errors.email.message}</p>}
               <Input
                 htmlFor={"password"}
                 id={"password"}
@@ -69,7 +88,9 @@ const RegisterPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                handle={register("password")}
               />
+               {errors.password && <p>{errors.password.message}</p>}
               <Input
                 htmlFor={"confirmpassword"}
                 id={"confirmpassword"}
@@ -87,7 +108,9 @@ const RegisterPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                handle={register("checkpassword")}
               />
+               {errors.checkpassword && <p>{errors.checkpassword.message}</p>}
             </div>
 
             <div className="checkBoxContainer">

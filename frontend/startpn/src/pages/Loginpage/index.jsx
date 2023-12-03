@@ -81,6 +81,7 @@ const LoginPage = () => {
               backgroundColor={"#476EE6"}
               buttonTypography="text_circular_button_color_FFF"
               marginTop={"70px"}
+              
             />
           </form>
         </div>
