@@ -11,6 +11,7 @@ import "./register.css";
 import { registerSchema } from "../../schemas/session.register.shema";
 import { useContext } from "react";
 import { SessionsContext } from "../../context/sessionsContext";
+import { Link } from "react-router-dom";
 const RegisterPage = () => {
   const { sessionsRegister } = useContext(SessionsContext);
   const {
@@ -50,7 +51,7 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("name")}
               />
-               {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && <p>{errors.name.message}</p>}
               <Input
                 htmlFor={"email"}
                 id={"email"}
@@ -70,7 +71,7 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
               />
-               {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <p>{errors.email.message}</p>}
               <Input
                 htmlFor={"password"}
                 id={"password"}
@@ -90,7 +91,7 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("password")}
               />
-               {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <p>{errors.password.message}</p>}
               <Input
                 htmlFor={"confirmpassword"}
                 id={"confirmpassword"}
@@ -110,7 +111,7 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("checkpassword")}
               />
-               {errors.checkpassword && <p>{errors.checkpassword.message}</p>}
+              {errors.checkpassword && <p>{errors.checkpassword.message}</p>}
             </div>
 
             <div className="checkBoxContainer">
@@ -142,6 +143,9 @@ const RegisterPage = () => {
               backgroundColor={"#476EE6"}
               buttonTypography="text_circular_button_color_FFF"
             />
+            <p className="linkToLogin">
+              Ja tem uma conta ? <Link to={"/login"}>Login</Link>
+            </p>
           </form>
         </div>
 

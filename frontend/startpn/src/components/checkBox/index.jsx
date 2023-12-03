@@ -10,10 +10,11 @@ const Checkbox = ({
   inputBorderRadius,
   inputBorder,
 }) => {
-  const [isChecked, setChecked] = useState(false);
+  const [isChecked, setChecked] = useState(true);
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = () => {  
     setChecked(!isChecked);
+
   };
   const checkBoxContainer = {
     display: display,
