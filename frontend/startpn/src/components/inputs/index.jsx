@@ -18,6 +18,8 @@ const Input = ({
   handle,
   marginBottomDivInputsLabel,
   flexDirection,
+  divWidth,
+  divMaxWidth
 }) => {
   const styledDiv = {
     display: display,
@@ -25,6 +27,9 @@ const Input = ({
     gap: gap,
     marginBottom: marginBottomDivInputsLabel,
     flexDirection: flexDirection,
+    width: divWidth,
+    maxWidth: divMaxWidth,
+  
   };
   const styledInput = {
     height: inputHeight,

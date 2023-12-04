@@ -12,7 +12,8 @@ const Button = ({
   marginTop,
   position,
   top,
-  rigth
+  rigth,
+  bottom
 }) => {
   const buttonStyle = {
     height: height,
@@ -25,6 +26,7 @@ const Button = ({
     marginTop : marginTop,
     position : position,
     top: top,
+    bottom: bottom,
     right: rigth
   };
   return (

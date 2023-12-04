@@ -32,6 +32,9 @@
   flex-direction: column;
   gap: 20px;
   height: 100%;
+  @media (min-width: 1024px) {
+    align-items: center;
+  }
 }
 
 .logoTittleContainer {
@@ -43,15 +46,19 @@
   gap: 25px;
   justify-content: flex-start;
   margin-bottom: 20px;
+  @media (min-width: 1024px) {
+    max-width: 85%;
+    margin-top: 30px;
+  }
 }
 .inputsContainer {
   /* margin-bottom: 10px; */
   @media (min-width: 1024px) {
-    border: 1px solid red;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    height: 55%;
   }
 }
 
@@ -72,6 +79,8 @@
   bottom: 0;
   right: 0;
   width: 100%;
+  max-height: 861px;
+  min-width: 559px;
   /* max-width: 690px;  */
 }
 

@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../service";
+import { useNavigate } from "react-router-dom";
 
 export const CategoriesContext = createContext({});
 
@@ -8,6 +9,7 @@ export const CategoriesProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate()
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -86,6 +88,7 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
+      navigate("/dashboard")
     } catch (error) {
       console.log(error);
     }

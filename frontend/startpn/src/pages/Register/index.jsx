@@ -38,9 +38,9 @@ const RegisterPage = () => {
                 type={"text"}
                 name={"Name"}
                 placeholder={"Insira seu nome"}
-                display={"grid"}
-                grid={"auto auto"}
-                gap={"10px"}
+                display={"flex"}
+                flexDirection={"column"}
+                gap={"25px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
@@ -61,9 +61,9 @@ const RegisterPage = () => {
                 type={"text"}
                 name={"E-mail"}
                 placeholder={"Insira seu e-mail"}
-                display={"grid"}
-                grid={"auto auto"}
-                gap={"10px"}
+                display={"flex"}
+                flexDirection={"column"}
+                gap={"25px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
@@ -75,20 +75,17 @@ const RegisterPage = () => {
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
               />
-              {errors.email && (
-                <p className="text_circular_small_red">
-                  {errors.email.message}
-                </p>
-              )}
+              {errors.email && <p className="text_circular_small_red">{errors.email.message}</p>}
               <Input
                 htmlFor={"password"}
                 id={"password"}
                 type={"password"}
                 name={"Senha"}
                 placeholder={"Insira sua senha"}
-                display={"grid"}
+                display={"flex"}
+                flexDirection={"column"}
                 grid={"auto auto"}
-                gap={"10px"}
+                gap={"25px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
@@ -111,9 +108,9 @@ const RegisterPage = () => {
                 type={"password"}
                 name={"Confirmar sua senha"}
                 placeholder={"Confirme sua senha"}
-                display={"grid"}
-                grid={"auto auto"}
-                gap={"10px"}
+                display={"flex"}
+                flexDirection={"column"}
+                gap={"25px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
