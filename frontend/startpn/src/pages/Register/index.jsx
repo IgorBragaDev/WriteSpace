@@ -6,20 +6,23 @@ import SteveJobs from "../../images/png/stevejobs.png";
 import Ondas from "../../images/png/ondas.png";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import "./register.css";
 import { registerSchema } from "../../schemas/session.register.shema";
 import { useContext, useEffect, useState } from "react";
 import { SessionsContext } from "../../context/sessionsContext";
 import { Link } from "react-router-dom";
+import "./register.css";
+import InputPassword from "../../components/inputPassword";
+
 const RegisterPage = () => {
   const { sessionsRegister } = useContext(SessionsContext);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema) });
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -36,6 +39,7 @@ const RegisterPage = () => {
     windowWidth > 1024
       ? { justifyContent: "", width: "130px", height: "40px" }
       : { justifyContent: "space-between" };
+      
   const inputStyles =
     windowWidth > 1024
       ? {  inputMinWidth:"0px" }
@@ -102,7 +106,7 @@ const RegisterPage = () => {
                   {errors.email.message}
                 </p>
               )}
-              <Input
+              <InputPassword
                 htmlFor={"password"}
                 id={"password"}
                 type={"password"}
@@ -129,7 +133,7 @@ const RegisterPage = () => {
                   {errors.password.message}
                 </p>
               )}
-              <Input
+              <InputPassword
                 htmlFor={"confirmpassword"}
                 id={"confirmpassword"}
                 type={"password"}

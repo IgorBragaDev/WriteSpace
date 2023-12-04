@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { SessionsContext } from "../../context/sessionsContext";
 import { loginSchema } from "../../schemas/session.login.schema";
 import "./login.css";
+import InputPassword from "../../components/inputPassword";
 
 const LoginPage = () => {
   const { sessionsLogin } = useContext(SessionsContext);
@@ -51,7 +52,7 @@ const LoginPage = () => {
               />
             </div>
             {errors.email && <p>{errors.email.message}</p>}
-            <Input
+            <InputPassword
               htmlFor={"password"}
               id={"password"}
               type={"password"}

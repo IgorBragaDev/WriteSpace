@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import Button from "../../components/button";
 import Input from "../../components/inputs";
 import navi from "../../images/svg/seta.svg";
@@ -12,11 +12,13 @@ import userIconMenu from "../../images/svg/user-icon.svg";
 import exitIcon from "../../images/svg/logout.svg";
 import whiteVector from "../../images/svg/vectorWhite.svg";
 import { useForm } from "react-hook-form";
-import { useContext, useEffect, useState } from "react";
-import { CategoriesContext } from "../../context/categoriesContext";
-import "./createCard.css";
-import Logo from "../../components/logo";
+import { Link } from "react-router-dom";
 import { SessionsContext } from "../../context/sessionsContext";
+import { CategoriesContext } from "../../context/categoriesContext";
+import Logo from "../../components/logo";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import "./createCard.css";
 
 const CreateCard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -84,7 +86,7 @@ const CreateCard = () => {
               inputHeight={"40px"}
               inputMaxWidth={"100%"}
               divWidth={"100%"}
-              divMaxWidth={"900px"}
+              divMaxWidth={"1100px"}
               type={"text"}
               handle={register("name")}
             />
