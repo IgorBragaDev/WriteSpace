@@ -1,64 +1,38 @@
+import React, { useContext } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Input from "../../components/Input/input";
 import logo from "../../images/png/logo.png";
 import ButtonForms from "../../components/button/button";
 import { useState } from "react";
-import InputPassword from "../../components/inputPassword/inputPassword";
 import { useForm, Controller } from "react-hook-form";
-import { useNavigation } from "@react-navigation/native";
 import api from "../../services/api";
+import InputPassword from "../../components/inputPassword/inputPassword";
+import { SessionsContext } from "../../context/sessions.context";
+
 export default function App() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const handleTermsToggle = () => {
     setTermsAccepted(!termsAccepted);
   };
-  const navigation = useNavigation();
+  const { sessionsLogin } = useContext(SessionsContext);
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({});
 
-  const register = async (data) => {
-    try {
-      const response = await api.post("sessions", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  const submit = async (data) => {
+    console.log(data);
+    await sessionsLogin(data);
   };
 
-  const submit = (data) => {
-    console.log(data);
-    register(data);
-  };
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
         <Image source={logo} />
-        <Text style={styles.textCircularBlue}>Cadastro</Text>
+        <Text style={styles.textCircularBlue}>Dados de acesso</Text>
       </View>
       <View style={styles.inputArea}>
-        <Controller
-          control={control}
-          name="name"
-          render={({ field: { onChange, value } }) => (
-            <Input
-              placeholder={"Insira seu nome"}
-              label={"Name"}
-              borderWidth={1}
-              borderColor={"#D7D7D7"}
-              height={50}
-              borderRadius={10}
-              onChangeText={onChange}
-              valueInput={value}
-            />
-          )}
-        />
-
         <Controller
           control={control}
           name="email"
@@ -92,30 +66,8 @@ export default function App() {
             />
           )}
         />
-        <InputPassword
-          placeholder={"Confirme sua senha"}
-          label={"Confirme sua senha "}
-          borderWidth={1}
-          borderColor={"#D7D7D7"}
-          height={45}
-          borderRadius={10}
-        />
       </View>
-      <Text style={styles.termsTitle}>Temos de uso e privacidade</Text>
-      <View>
-        <View style={styles.termsContainer}>
-          <TouchableOpacity
-            onPress={handleTermsToggle}
-            style={styles.termsButton}
-          >
-            <Text>{termsAccepted ? "✔️" : "❌"}</Text>
-          </TouchableOpacity>
-          <Text style={styles.termsText}>
-            Ao clicar neste botão, eu concordo com os termos de uso e
-            privacidade da nossa empresa.
-          </Text>
-        </View>
-      </View>
+
       <ButtonForms
         buttonText={"Cadastrar"}
         buttonBoxAlign={"center"}
@@ -133,9 +85,7 @@ export default function App() {
         buttonTextColor={"#FFF"}
         onPress={handleSubmit(submit)}
       />
-      <Text onPress={() => navigation.navigate("Login")}>
-        Ja tenho uma conta LOGAR
-      </Text>
+      <Text>Ja tenho uma conta LOGAR</Text>
     </View>
   );
 }
@@ -185,5 +135,8 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     borderColor: "#476EE6",
+  },
+  inputArea: {
+    marginTop: 20,
   },
 });
