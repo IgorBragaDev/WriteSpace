@@ -6,6 +6,8 @@
   align-items: center;
   @media (min-width: 1024px) {
     width: 50%;
+    justify-content: center;
+    padding-top: 100px;
   }
 }
 
@@ -25,6 +27,9 @@
   gap: 13px;
   max-width: 324px;
   width: 100%;
+  @media (min-width: 1024px) {
+    max-width: none;
+  }
 }
 
 .formRegister {
@@ -33,6 +38,7 @@
   gap: 20px;
   height: 100%;
   @media (min-width: 1024px) {
+    width: 100%;
     align-items: center;
   }
 }
@@ -52,13 +58,10 @@
   }
 }
 .inputsContainer {
-  /* margin-bottom: 10px; */
   @media (min-width: 1024px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    height: 55%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
   }
 }
 

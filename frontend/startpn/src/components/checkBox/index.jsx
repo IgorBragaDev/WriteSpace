@@ -9,7 +9,7 @@ const Checkbox = ({
   inputHeight,
   inputBorderRadius,
   inputBorder,
-  
+  labelTypograth,
 }) => {
   const [isChecked, setChecked] = useState(true);
 
@@ -33,24 +33,19 @@ const Checkbox = ({
     border: "2px solid rgb(71, 110, 230)",
     cursor: "pointer",
     height: "30px",
-    width: "40px",
-    borderRadius: "10px",
+    width: "30px",
+    borderRadius: "12px",
     backgroundColor: "transparent",
-    display : "flex",
+    display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    
   };
   return (
     <div style={checkBoxContainer}>
-      <p
-        id="myCheckbox"
-        onClick={handleCheckboxChange}
-        style={checkBoxButton}
-      >
+      <p id="myCheckbox" onClick={handleCheckboxChange} style={checkBoxButton}>
         {isChecked && <FaCheck />}
       </p>
-      <label htmlFor="myCheckbox">
+      <label htmlFor="myCheckbox" className={labelTypograth}>
         Ao clicar nesse botão, eu concordo com os temos de uso e privacidade da
         nossa empresa
       </label>

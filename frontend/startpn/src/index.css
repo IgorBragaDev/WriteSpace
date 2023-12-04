@@ -1,3 +1,5 @@
+/* FONTES AZUIS*/
+
 .text_circular_color_blue {
   color: #476ee6;
   font-family: "Poppins", sans-serif;
@@ -6,6 +8,20 @@
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.72px;
+}
+
+.text_circular_small_blue {
+  color: #476ee6;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  @media (min-width: 1024px) {
+    text-align: left;
+    margin-left: 40px;
+  }
 }
 
 .text_circular_color_blue_bold {
@@ -18,6 +34,36 @@
   letter-spacing: 0.101px;
 }
 
+.text_circular_small_blue_categories {
+  color: #476ee6;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text_circular_small_blue_categories_bold {
+  color: #476ee6;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.075px;
+}
+
+.text_circular_color_blue_title {
+  color: #476ee6;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24.286px;
+  letter-spacing: 0.101px;
+}
+
+/* FONTES PRETAS*/
+
 .text_circular_label {
   color: #000;
   font-family: "Poppins", sans-serif;
@@ -28,14 +74,13 @@
   letter-spacing: 0.202px;
 }
 
-.text_circular_placeholder {
-  color: #a0a0a0;
-  font-feature-settings: "clig" off, "liga" off;
+.text_circular_color_black_card_content {
+  color: #000;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .text_circular_small_bold_black {
@@ -48,47 +93,33 @@
   line-height: 20px;
 }
 
-.text_circular_small_blue {
-  color: #476ee6;
-  text-align: center;
+.text_circular_color_black_big_card {
+  color: #000;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-}
-.text_circular_small_red {
-  color: #ff6666;
-  max-width: 300px;
-  font-family: "Poppins", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-}
-.text_circular_small_blue_categories {
-  color: #476ee6;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
-.text_circular_small_blue_categories_bold {
-  color: #476ee6;
-  font-family: Poppins;
+
+.text_circular_color_black_card_content {
+  color: #000;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-style: normal;
-  font-weight: 600;
-  letter-spacing: 0.075px;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.text_circular_button_color_FFF {
-  color: #fff;
-  text-align: center;
+/* FONTES CINZAS*/
+
+.text_circular_placeholder {
+  color: #a0a0a0;
+  font-feature-settings: "clig" off, "liga" off;
   font-family: "Poppins", sans-serif;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 20px;
 }
 
@@ -101,13 +132,16 @@
   line-height: normal;
 }
 
-.text_circular_color_black_big_card {
-  color: #000;
+/* FONTES BRANCAS*/
+
+.text_circular_button_color_FFF {
+  color: #fff;
+  text-align: center;
   font-family: "Poppins", sans-serif;
-  font-size: 17px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .text_circular_color_white_title_card {
@@ -121,21 +155,13 @@
   letter-spacing: 0.3px;
 }
 
-.text_circular_color_black_card_content {
-  color: #000;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+/* FONTES VERMELHAS*/
 
-.text_circular_color_blue_title {
-  color: #476ee6;
+.text_circular_small_red {
+  color: #ff6666;
+  max-width: 300px;
   font-family: "Poppins", sans-serif;
-  font-size: 30px;
+  font-size: 12px;
   font-style: normal;
-  font-weight: 600;
-  line-height: 24.286px;
-  letter-spacing: 0.101px;
+  font-weight: 500;
 }

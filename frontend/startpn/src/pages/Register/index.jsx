@@ -9,16 +9,37 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import "./register.css";
 import { registerSchema } from "../../schemas/session.register.shema";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SessionsContext } from "../../context/sessionsContext";
 import { Link } from "react-router-dom";
 const RegisterPage = () => {
   const { sessionsRegister } = useContext(SessionsContext);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(registerSchema) });
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const checkBoxStyles =
+    windowWidth > 1024
+      ? { justifyContent: "", width: "130px", height: "40px" }
+      : { justifyContent: "space-between" };
+  const inputStyles =
+    windowWidth > 1024
+      ? {  inputMinWidth:"0px" }
+      : {  inputMinWidth:"290px" };
   return (
     <>
       <div className="resposiveContainer">
@@ -44,13 +65,13 @@ const RegisterPage = () => {
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
-                inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
                 marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("name")}
+                {...inputStyles}
               />
               {errors.name && (
                 <p className="text_circular_small_red">{errors.name.message}</p>
@@ -67,15 +88,20 @@ const RegisterPage = () => {
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
-                inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
                 marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
+                {...inputStyles}
+
               />
-              {errors.email && <p className="text_circular_small_red">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text_circular_small_red">
+                  {errors.email.message}
+                </p>
+              )}
               <Input
                 htmlFor={"password"}
                 id={"password"}
@@ -89,13 +115,14 @@ const RegisterPage = () => {
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
-                inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
                 marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("password")}
+                {...inputStyles}
+
               />
               {errors.password && (
                 <p className="text_circular_small_red">
@@ -114,12 +141,13 @@ const RegisterPage = () => {
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
-                inputMinWidth={"290px"}
                 inputBorderRadius={"7px"}
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("checkpassword")}
+                {...inputStyles}
+
               />
               {errors.checkpassword && <p>{errors.checkpassword.message}</p>}
             </div>
@@ -133,8 +161,9 @@ const RegisterPage = () => {
                 alignItems={"center"}
                 gap={"10px"}
                 justifyContent={"space-between"}
-                // inputWidth= {"50px"}
                 inputBorder={"2px solid #476EE6 "}
+                labelTypograth={"text_circular_label"}
+                {...checkBoxStyles}
               />
               <p className="text_circular_small_blue">
                 Termos de uso e privacidade
