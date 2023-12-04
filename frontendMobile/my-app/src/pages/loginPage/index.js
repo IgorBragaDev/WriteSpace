@@ -85,7 +85,6 @@ export default function App() {
         buttonTextColor={"#FFF"}
         onPress={handleSubmit(submit)}
       />
-      <Text>Ja tenho uma conta LOGAR</Text>
     </View>
   );
 }
@@ -95,12 +94,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
+    gap: "70px",
   },
   logoContainer: {
-    marginTop: 50,
     display: "flex",
     gap: "35",
+    alignItems: "center",
   },
   textCircularBlue: {
     fontSize: 30,

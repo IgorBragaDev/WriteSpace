@@ -7,13 +7,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const SessionsContext = createContext({});
 
 export const SessionsProvider = ({ children }) => {
-  const navigate = useNavigation();
+  const navigation = useNavigation();
   const sessionsLogin = async (data) => {
     try {
       const response = await api.post("sessions/login", data);
       await AsyncStorage.setItem("authToken", response.data.token);
 
-      navigate("/dashboard");
+      navigation.navigate("dashboard");
     } catch (error) {
       console.log(error, "algo deu errado na conection");
     }
@@ -24,7 +24,7 @@ export const SessionsProvider = ({ children }) => {
     try {
       const response = await api.post("sessions", requestData);
       console.log(response);
-      navigate("/login");
+      navigation.navigate("/login");
     } catch (error) {}
   };
   const sessionsLogout = async () => {

@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import RegisterScreen from "../pages/registerPage/index"; // Substitua pelo caminho real do componente de registro
 import LoginScreen from "../pages/loginPage/index"; // Substitua pelo caminho real do componente de login
 import { SessionsProvider } from "../context/sessions.context";
+import DashBoard from "../pages/dashBoard";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const AppStack = () => {
             component={LoginScreen}
             options={{ title: "Login" }}
           />
+          <Stack.Screen name="dashboard" component={DashBoard} />
         </Stack.Navigator>
       </SessionsProvider>
     </NavigationContainer>
