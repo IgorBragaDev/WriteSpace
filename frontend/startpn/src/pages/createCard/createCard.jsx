@@ -16,12 +16,12 @@ import { Link } from "react-router-dom";
 import { SessionsContext } from "../../context/sessionsContext";
 import { CategoriesContext } from "../../context/categoriesContext";
 import Logo from "../../components/logo";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import "./createCard.css";
+import TextEditor from "../../components/textEditor";
 
 const CreateCard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [editorValue, setEditorValue] = useState("");
   const { categories, createCard } = useContext(CategoriesContext);
   const { sessionsLogout } = useContext(SessionsContext);
   const { register, handleSubmit } = useForm();
@@ -69,7 +69,12 @@ const CreateCard = () => {
             <img src={vector2} alt="" />
           </div>
         </div>
-        <form className="createCardForm" onSubmit={handleSubmit(createCard)}>
+        <form
+          className="createCardForm"
+          onSubmit={handleSubmit((data) =>
+            createCard({ ...data, text: editorValue })
+          )}
+        >
           <div className="responsiveFotmsCreateCard">
             <Input
               htmlFor={"Nome"}
@@ -109,15 +114,7 @@ const CreateCard = () => {
             </div>
           </div>
           <div className="textAreaBox">
-            <textarea
-              className="text_circular_placeholder"
-              name=""
-              id=""
-              cols="30"
-              rows="15"
-              placeholder="Insira o texto"
-              {...register("text")}
-            ></textarea>
+            <TextEditor value={editorValue} setValue={setEditorValue} />
           </div>
           <Button
             buttonText={"Criar"}

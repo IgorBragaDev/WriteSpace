@@ -9,7 +9,7 @@ export const CategoriesProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -80,6 +80,7 @@ export const CategoriesProvider = ({ children }) => {
   };
 
   const createCard = async (data) => {
+    console.log(data);
     const { id_category, ...rest } = data;
     try {
       const response = await api.post(`methodology/${id_category}`, rest, {
@@ -88,7 +89,7 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      navigate("/dashboard")
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }

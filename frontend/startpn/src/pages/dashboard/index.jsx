@@ -9,7 +9,7 @@ import chessIcon from "../../images/svg/Vector.svg";
 import userIconMenu from "../../images/svg/user-icon.svg";
 import exitIcon from "../../images/svg/logout.svg";
 import elipse from "../../images/svg/ellipse.svg";
-import vector2 from "../../images/svg/vector2.svg"
+import vector2 from "../../images/svg/vector2.svg";
 import plusSignal from "../../images/svg/mais.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
@@ -50,7 +50,9 @@ const DashBoard = () => {
               <h1 className="text_circular_color_blue_title">Playbooks</h1>
               <div className="headerFromWebVersionDiv">
                 <img src={userIcon} alt="" />
-                <p className="text_circular_color_black_card_content">Igor Braga</p>
+                <p className="text_circular_color_black_card_content">
+                  Igor Braga
+                </p>
                 <img src={vector2} alt="" />
               </div>
             </div>
@@ -90,9 +92,10 @@ const DashBoard = () => {
                         Editar
                       </button>
                     </div>
-                    <p className="text_circular_color_black_card_content">
-                      {card.text}
-                    </p>
+                    <p className="text_circular_color_black_card_content"></p>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: card.text }}
+                    />
                   </li>
                 ))}
               </ul>
