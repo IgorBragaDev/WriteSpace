@@ -11,6 +11,7 @@ export const CategoriesProvider = ({ children }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [activeCard, setActiveCard] = useState({});
   const navigate = useNavigate();
   const openModal = () => {
     setIsModalOpen(true);
@@ -30,6 +31,7 @@ export const CategoriesProvider = ({ children }) => {
     setActiveCategoryId(categoryId);
     getCategoriesCards(categoryId);
   };
+
   const getUserCategories = async () => {
     try {
       const response = await api.get("categories", {
@@ -43,6 +45,7 @@ export const CategoriesProvider = ({ children }) => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     const getUserCategories = async () => {
       try {
@@ -85,11 +88,10 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      getUserCategories()
+      getUserCategories();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    
   };
 
   const getCategoriesCards = async (id) => {
@@ -107,7 +109,6 @@ export const CategoriesProvider = ({ children }) => {
   };
 
   const createCard = async (data) => {
-    console.log(data);
     const { id_category, ...rest } = data;
     try {
       const response = await api.post(`methodology/${id_category}`, rest, {
@@ -117,6 +118,37 @@ export const CategoriesProvider = ({ children }) => {
         },
       });
       navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editCard = async (id , data) => {
+    console.log(id)
+    console.log(data)
+    try {
+      const response = await api.put(`methodology/card/${id}`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      getCategoriesCards(id)
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  const getCardById = async (id) => {
+    try {
+      const response = await api.get(`methodology/card/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      setActiveCard(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -139,6 +171,9 @@ export const CategoriesProvider = ({ children }) => {
         openEditModal,
         closeEditModal,
         editCategories,
+        getCardById,
+        activeCard,
+        editCard
       }}
     >
       {children}

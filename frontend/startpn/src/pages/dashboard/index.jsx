@@ -30,6 +30,7 @@ const DashBoard = () => {
     setEditModalOpen,
     openEditModal,
     closeEditModal,
+    getCardById
   } = useContext(CategoriesContext);
 
   const { sessionsLogout } = useContext(SessionsContext);
@@ -111,7 +112,7 @@ const DashBoard = () => {
                       <h1 className="text_circular_color_black_big_card">
                         {card.name}
                       </h1>
-                      <button>
+                      <button onClick={() =>getCardById(card.id)}>
                         <Link
                           className="text_circular_color_white_title_card"
                           to={`/editcard/${card.id}`}

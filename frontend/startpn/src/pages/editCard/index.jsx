@@ -21,7 +21,7 @@ import TextEditor from "../../components/textEditor";
 const EditCard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [editorValue, setEditorValue] = useState("");
-  const { categories, createCard } = useContext(CategoriesContext);
+  const { activeCard, editCard } = useContext(CategoriesContext);
   const { sessionsLogout } = useContext(SessionsContext);
   const { register, handleSubmit } = useForm();
   const { id } = useParams();
@@ -43,6 +43,11 @@ const EditCard = () => {
       ? { bottom: "18px", width: "130px", height: "40px" }
       : { top: "18px" };
 
+  useEffect(() => {
+    if (activeCard) {
+      setEditorValue(activeCard.text || "");
+    }
+  }, [activeCard]);
   return (
     <>
       <div className="createCardPageContainer">
@@ -72,7 +77,7 @@ const EditCard = () => {
         <form
           className="createCardForm"
           onSubmit={handleSubmit((data) =>
-            createCard({ ...data, text: editorValue })
+            editCard(id, { ...data, text: editorValue })
           )}
         >
           <div className="responsiveFotmsCreateCard">
@@ -85,7 +90,7 @@ const EditCard = () => {
               gap={"10px"}
               inputBorder={"1px solid #D7D7D7"}
               inputBorderRadius={"10px"}
-              placeholder={"Insira um nome"}
+              placeholder={activeCard.name}
               placeholdertypography={"text_circular_placeholder"}
               inputWidth={"100%"}
               inputHeight={"40px"}
@@ -105,11 +110,7 @@ const EditCard = () => {
                 className="categorieSelect text_circular_placeholder"
                 {...register("id_category")}
               >
-                {categories.map((categorie) => (
-                  <option key={categorie.id} value={categorie.id}>
-                    {categorie.title}
-                  </option>
-                ))}
+                <option>blabla</option>
               </select>
             </div>
           </div>
