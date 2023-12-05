@@ -11,20 +11,27 @@ import exitIcon from "../../images/svg/logout.svg";
 import elipse from "../../images/svg/ellipse.svg";
 import vector2 from "../../images/svg/vector2.svg";
 import plusSignal from "../../images/svg/mais.svg";
+import pen from "../../images/svg/pen.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
 import { SessionsContext } from "../../context/sessionsContext";
 import "./dashboard.css";
 const DashBoard = () => {
-  const { categories, isModalOpen, openModal, getCategoriesCards, cards } =
-    useContext(CategoriesContext);
+  const {
+    categories,
+    isModalOpen,
+    openModal,
+    cards,
+    handleCategoryClick,
+    activeCategoryId,
+  } = useContext(CategoriesContext);
 
   const { sessionsLogout } = useContext(SessionsContext);
+
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   const toggleMenu = () => {
-    console.log("click");
     console.log(openSideMenu);
     setOpenSideMenu(!openSideMenu);
   };
@@ -63,13 +70,21 @@ const DashBoard = () => {
                 </h1>
                 <ul>
                   {categories.map((categories) => (
-                    <li key={categories.id}>
+                    <li
+                      key={categories.id}
+                      className={
+                        categories.id === activeCategoryId
+                          ? "activeCategory"
+                          : ""
+                      }
+                    >
                       <p
                         className="text_circular_small_blue_categories"
-                        onClick={() => getCategoriesCards(categories.id)}
+                        onClick={() => handleCategoryClick(categories.id)}
                       >
                         {categories.title}
                       </p>
+                      <img src={pen} alt="" />
                     </li>
                   ))}
                 </ul>
@@ -92,8 +107,8 @@ const DashBoard = () => {
                         Editar
                       </button>
                     </div>
-                    <p className="text_circular_color_black_card_content"></p>
                     <div
+                      className="cardContent"
                       dangerouslySetInnerHTML={{ __html: card.text }}
                     />
                   </li>

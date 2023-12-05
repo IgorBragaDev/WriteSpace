@@ -61,7 +61,7 @@ const CreateCard = () => {
             <Link to="/dashboard">
               <img className="navigationCircleBlue" src={whiteVector} alt="" />
             </Link>
-            <h1 className="text_circular_color_blue_title">Editar Card</h1>
+            <h1 className="text_circular_color_blue_title">Criar Card</h1>
           </div>
           <div className="headerFromWebVersionDiv">
             <img src={userIcon} alt="" />

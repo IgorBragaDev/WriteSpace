@@ -9,6 +9,7 @@ export const CategoriesProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
   const navigate = useNavigate();
   const openModal = () => {
     setIsModalOpen(true);
@@ -16,6 +17,11 @@ export const CategoriesProvider = ({ children }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    setActiveCategoryId(categoryId);
+    getCategoriesCards(categoryId);
   };
   const getUserCategories = async () => {
     try {
@@ -105,6 +111,8 @@ export const CategoriesProvider = ({ children }) => {
         getCategoriesCards,
         cards,
         createCard,
+        handleCategoryClick,
+        activeCategoryId
       }}
     >
       {children}

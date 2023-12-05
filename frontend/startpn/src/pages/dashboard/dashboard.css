@@ -19,6 +19,7 @@
     margin: 0 auto;
     margin-bottom: 70px;
     margin-top: 20px;
+    padding-top: 50px;
   }
 }
 .headerFromWebVersionDiv {
@@ -195,6 +196,21 @@ img {
     background-color: #fff;
   }
 }
+.categoriesBox ul li img {
+  display: none;
+}
+
+.categoriesBox ul li.activeCategory img {
+  display: block;
+}
+
+.categoriesBox ul li.activeCategory {
+  display: flex;
+  gap: 20px ;
+  border-radius: 8px;
+  background: #f7f9fb;
+}
+
 .categoriesBox ul {
   overflow-y: auto;
   height: 200px;
@@ -215,11 +231,13 @@ img {
 .cardContainer {
   border: 1px solid #d7d7d7;
   border-radius: 10px;
-  height: 200px;
+  height: 350px;
   margin-top: 30px;
   padding: 8px 6px;
   @media (min-width: 1024px) {
     background-color: #fff;
+    margin-top: 0;
+    margin-bottom: 15px;
   }
 }
 .cardBoxTitle {
@@ -235,4 +253,9 @@ img {
   background: #476ee6;
   border: none;
   padding: 10px;
+}
+
+.cardContent {
+  height: 280px;
+  overflow-y: auto;
 }
