@@ -248,6 +248,11 @@ img {
   padding-bottom: 9px;
 }
 
+.cardBoxTitle a{
+  text-decoration: none;
+}
+
+
 .cardBoxTitle button {
   border-radius: 60px;
   background: #476ee6;

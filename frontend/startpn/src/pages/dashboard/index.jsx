@@ -82,17 +82,19 @@ const DashBoard = () => {
                           ? "activeCategory"
                           : ""
                       }
-                      >
+                    >
                       <p
                         className="text_circular_small_blue_categories"
                         onClick={() => handleCategoryClick(categories.id)}
-                        >
+                      >
                         {categories.title}
                       </p>
                       <img onClick={() => openEditModal()} src={pen} alt="" />
                     </li>
                   ))}
-                  {isEditModalOpen ? <EditCategoriesModal closeModal={closeEditModal}/> :null}
+                  {isEditModalOpen ? (
+                    <EditCategoriesModal closeModal={closeEditModal} />
+                  ) : null}
                 </ul>
                 <p
                   onClick={openModal}
@@ -109,8 +111,13 @@ const DashBoard = () => {
                       <h1 className="text_circular_color_black_big_card">
                         {card.name}
                       </h1>
-                      <button className="text_circular_color_white_title_card">
-                        Editar
+                      <button>
+                        <Link
+                          className="text_circular_color_white_title_card"
+                          to={`/editcard/${card.id}`}
+                        >
+                          Editar
+                        </Link>
                       </button>
                     </div>
                     <div

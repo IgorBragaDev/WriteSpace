@@ -34,7 +34,8 @@ const TextEditor = ({ value, setValue }) => {
     <>
       <ReactQuill
         modules={module}
-        theme="snow"
+        theme="snow"  // Escolha o tema 'bubble' para personalizar o background
+        style={{ background: "#fff", height: "200px" }}  // Adicione o estilo para definir o background
         value={value}
         onChange={setValue}
       />
