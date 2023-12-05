@@ -20,7 +20,7 @@ const AddCategoriesModal = () => {
         <div>
           <div className="modalTitle">
             <h1 className="text_circular_small_blue_categories">
-              Adicione a categoria
+              Adicionar Categoria
             </h1>
             <button onClick={closeModal}>X</button>
           </div>

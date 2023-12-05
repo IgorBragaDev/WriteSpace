@@ -14,9 +14,10 @@ import plusSignal from "../../images/svg/mais.svg";
 import pen from "../../images/svg/pen.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
-import AddCategoriesModal from "../../components/addCategoriesModal";
+import AddCategoriesModal from "../../components/AddCategoriesModal";
 import { SessionsContext } from "../../context/sessionsContext";
 import "./dashboard.css";
+import EditCategoriesModal from "../../components/EditCategoriesModal";
 const DashBoard = () => {
   const {
     categories,
@@ -25,6 +26,10 @@ const DashBoard = () => {
     cards,
     handleCategoryClick,
     activeCategoryId,
+    isEditModalOpen,
+    setEditModalOpen,
+    openEditModal,
+    closeEditModal,
   } = useContext(CategoriesContext);
 
   const { sessionsLogout } = useContext(SessionsContext);
@@ -77,16 +82,17 @@ const DashBoard = () => {
                           ? "activeCategory"
                           : ""
                       }
-                    >
+                      >
                       <p
                         className="text_circular_small_blue_categories"
                         onClick={() => handleCategoryClick(categories.id)}
-                      >
+                        >
                         {categories.title}
                       </p>
-                      <img src={pen} alt="" />
+                      <img onClick={() => openEditModal()} src={pen} alt="" />
                     </li>
                   ))}
+                  {isEditModalOpen ? <EditCategoriesModal closeModal={closeEditModal}/> :null}
                 </ul>
                 <p
                   onClick={openModal}

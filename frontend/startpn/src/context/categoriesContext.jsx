@@ -9,14 +9,21 @@ export const CategoriesProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [cards, setCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const navigate = useNavigate();
   const openModal = () => {
     setIsModalOpen(true);
   };
+  const openEditModal = () => {
+    setEditModalOpen(true);
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const closeEditModal = () => {
+    setEditModalOpen(false);
   };
 
   const handleCategoryClick = (categoryId) => {
@@ -56,7 +63,6 @@ export const CategoriesProvider = ({ children }) => {
   }, [userToken]);
 
   const addCategories = async (data) => {
-    console.log(data);
     try {
       const response = await api.post("categories", data, {
         headers: {
@@ -69,6 +75,21 @@ export const CategoriesProvider = ({ children }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const editCategories = async (data) => {
+    try {
+      const response = await api.put(`categories/${activeCategoryId}`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      getUserCategories()
+    } catch (error) {
+      console.log(error)
+    }
+    
   };
 
   const getCategoriesCards = async (id) => {
@@ -112,7 +133,12 @@ export const CategoriesProvider = ({ children }) => {
         cards,
         createCard,
         handleCategoryClick,
-        activeCategoryId
+        activeCategoryId,
+        isEditModalOpen,
+        setEditModalOpen,
+        openEditModal,
+        closeEditModal,
+        editCategories,
       }}
     >
       {children}
