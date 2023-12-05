@@ -31,5 +31,7 @@ routes.get("/categories",authMiddleware ,CategoriesController.getAllUserCategori
 
 routes.post("/methodology/:categoryId" , authMiddleware ,CardsController.createMethodology)
 routes.get("/methodology/:categoryId" , authMiddleware ,CardsController.getAllMethodoloogy)
+routes.get("/methodology/card/:cardId",authMiddleware , CardsController.getCardById)
+routes.put("/methodology/card/:cardId",authMiddleware , CardsController.updateCardById)
 
 module.exports = routes
