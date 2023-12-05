@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Category = require("../models/Categories");
 class MethodologyController {
   async createMethodology(req, res) {
-    const { text, name } = req.body;
+    const { text,name } = req.body;
     const userId = res.locals.user.id;
     const categoryId = req.params.categoryId;
 
@@ -24,7 +24,7 @@ class MethodologyController {
       const newMethodology = await Card.create({
         text,
         category_id: categoryId,
-        name,
+        name
       });
 
       res.status(201).json(newMethodology);
@@ -36,7 +36,7 @@ class MethodologyController {
 
   async getAllMethodoloogy(req, res) {
     const categoryId = req.params.categoryId;
-    console.log(categoryId);
+    console.log(categoryId)
     try {
       const categorMethodology = await Card.findAll({
         where: { category_id: categoryId },
@@ -77,10 +77,10 @@ class MethodologyController {
         return res.status(404).json({ error: "Card not found" });
       }
 
-      // card.text = text || card.text;
-      // card.name = name || card.name;
-
-      await card.update({ text, name });
+      card.text = text || card.text;
+      card.name = name || card.name;
+      
+      await card.save();
 
       res.status(200).json(card);
     } catch (error) {
