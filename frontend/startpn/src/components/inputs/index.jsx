@@ -19,7 +19,8 @@ const Input = ({
   marginBottomDivInputsLabel,
   flexDirection,
   divWidth,
-  divMaxWidth
+  divMaxWidth,
+  inputPading
 }) => {
   const styledDiv = {
     display: display,
@@ -38,6 +39,7 @@ const Input = ({
     minWidth: inputMinWidth,
     borderRadius: inputBorderRadius,
     border: inputBorder,
+    padding : inputPading
   };
   return (
     <>

@@ -15,28 +15,16 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { SessionsContext } from "../../context/sessionsContext";
 import { CategoriesContext } from "../../context/categoriesContext";
-import Logo from "../../components/logo";
-import "./createCard.css";
 import TextEditor from "../../components/textEditor";
+import SideBar from "../../components/sideBarmenu";
+import "./createCard.css";
+import HeaderWebVersion from "../../components/headerWebVersion";
 
 const CreateCard = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [editorValue, setEditorValue] = useState("");
   const { categories, createCard } = useContext(CategoriesContext);
-  const { sessionsLogout } = useContext(SessionsContext);
+  const { openSideMenu, windowWidth } = useContext(SessionsContext);
   const { register, handleSubmit } = useForm();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const buttonPosition =
     windowWidth > 1024
@@ -56,19 +44,33 @@ const CreateCard = () => {
             <h1 className="text_circular_color_black_big_card">Criar card</h1>
           </div>
         </header>
-        <div className="headerFromWebVersionCreateCard">
-          <div className="containerNavigationBlue">
-            <Link to="/dashboard">
-              <img className="navigationCircleBlue" src={whiteVector} alt="" />
-            </Link>
-            <h1 className="text_circular_color_blue_title">Criar Card</h1>
-          </div>
-          <div className="headerFromWebVersionDiv">
-            <img src={userIcon} alt="" />
-            <p className="text_circular_color_black_card_content">Igor Braga</p>
-            <img src={vector2} alt="" />
-          </div>
-        </div>
+        {/* <div className="headerFromWebVersionCreateCard"> */}
+          <HeaderWebVersion
+            userIcon={userIcon}
+            vector2={vector2}
+            whiteVector={whiteVector}
+            functionFromHeader={"Criar Card"}
+            headerFromWebVersionDisplay={windowWidth > 1024 ? "flex" : "none "}
+            headerFromWebVersionJustifyContent={"space-between"}
+            headerFromWebVersionPadding={"40px 16px 32px"}  
+            headerFromWebVersionDivBorder={"1px solid #d8d8d8"}
+            headerFromWebVersionDivWidth={"157px"}
+            headerFromWebVersionDivDisplay={"flex"}
+            headerFromWebVersionDivAlignItens={"center"}
+            headerFromWebVersionDivJustifyContents={"space-between"}
+            headerFromWebVersionDivPadding={"3px 7px"}
+            headerFromWebVersionDivBorderRadius={"19px"}
+            headerFromWebVersionDivBackGroundColor={"#fff"}
+            containerNavigationDisplay={"flex"}
+            containerNavigationAlignItens={"center"}
+            containerNavigationGap={"12px"}
+            navigationCircleBackground={"#476ee6"}
+            navigationCirclePadding={"7px"}
+            navigationCircleBorderRadius={"24px"}
+            setDisplayNoneForH1Display={"none"}
+            headerFromWebVersionMarginLeft={"300px"}
+          />
+        
         <form
           className="createCardForm"
           onSubmit={handleSubmit((data) =>
@@ -130,43 +132,55 @@ const CreateCard = () => {
           />
         </form>
 
-        <div className={`sideMenuBar`}>
-          <div className="sideMenuBarCloseButtonDiv ">
-            <Logo width={"153px"} heigth={"39px"} />
-            <button className="text_circular_small_blue_categories_bold">
-              x
-            </button>
-          </div>
-          <ul className="text_circular_side_menu_color_grey sideMenuItensContainer ">
-            <li className="sideMenuItens">
-              <img src={chessIcon} alt="" />
-              Playbooks
-            </li>
-            <li className="sideMenuItens">
-              <img src={taskIcon} alt="" />
-              Exemplo
-            </li>
-            <li className="sideMenuItens">
-              <img src={messageIcon} />
-              Exemplo
-            </li>
-            <li className="sideMenuItens">
-              <img src={settingIcon} alt="" />
-              Exemplo
-            </li>
-            <li className="sideMenuItens">
-              <img src={userIconMenu} alt="" />
-              Minha conta
-            </li>
-          </ul>
-          <h3
-            className="sideMenuItens text_circular_side_menu_color_grey"
-            onClick={() => sessionsLogout()}
-          >
-            <img src={exitIcon} alt="" />
-            Sair
-          </h3>
-        </div>
+        <SideBar
+          icon1={chessIcon}
+          name1={"Playbooks"}
+          icon2={taskIcon}
+          name2={"Exemplo"}
+          icon3={messageIcon}
+          name3={"Exemplo"}
+          icon4={settingIcon}
+          name4={"Exemplo"}
+          icon5={userIconMenu}
+          name5={"Minha conta"}
+          exitIcon={exitIcon}
+          sideMenuWidth={"75%"}
+          sideMenuMaxWidth={windowWidth > 1024 ? "300px" : ""}
+          sideMenuHeigth={"100vh"}
+          sideMenuPadding={"16px 20px"}
+          sideMenuBackGroundColor={"#fff"}
+          sideMenuBorderRadius={"17px"}
+          sideMenuBorderRight={"1px solid #d7d7d7"}
+          sideMenuBoxShadow={
+            windowWidth > 1024
+              ? "none"
+              : "24px 0px 200px 0px rgba(0, 0, 0, 0.4)"
+          }
+          sideMenuDisplay={"flex"}
+          sideMenuFlexDirection={"column"}
+          sideMenuPosition={"absolute"}
+          sideMenuTop={"0"}
+          sideMenuLeft={openSideMenu || windowWidth > 1024 ? "0" : "-1000px"}
+          sideMenuTransition={"left 0.3s ease"}
+          sideMenuGap={"25%"}
+          sideMenuPaddingTop={"50px"}
+          sideMenuBarItensDisplay={"flex"}
+          sideMenuBarItensFlexDirection={"column"}
+          sideMenuBarItensGap={"35px"}
+          sideMenuBarItensJustifyContent={"flex-start"}
+          sideMenuBarItensAlignItens={"flex-start"}
+          sideMenuBarCloseButtonDivDisplay={"flex"}
+          sideMenuBarCloseButtonDivJustifyContent={"space-between"}
+          sideMenuBarCloseButtonDivAlignItems={"center"}
+          sideMenuBarCloseButtonBorder={"none"}
+          sideMenuBarCloseButtonColor={"transparent"}
+          sideMenuBarCloseButtonFontSize={"20px"}
+          sideMenuBarCloseButtonDisplay={windowWidth > 1024 ? "none" : "flex"}
+          sideMenuItensDisplay={"flex"}
+          sideMenuItensAlignItens={"center"}
+          sideMenuItensGap={"10px"}
+          
+        />
       </div>
     </>
   );

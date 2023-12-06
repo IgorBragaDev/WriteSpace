@@ -63,12 +63,13 @@ const LoginPage = () => {
               gap={"10px"}
               inputHeight={"50px"}
               inputWidth={"100%"}
-              inputMaxWidth={"418px"}
+              inputMaxWidth={"419px"}
               inputMinWidth={"290px"}
               inputBorderRadius={"7px"}
               inputBorder={"1px solid #D7D7D7"}
               labeltypography="text_circular_label"
               placeholdertypography="text_circular_placeholder"
+              styledInputContainerMaxWidth={"419px"}
               handle={register("password")}
             />
             {errors.password && <p>{errors.password.message}</p>}

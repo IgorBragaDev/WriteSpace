@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Logo from "../../components/logo";
 import dropMenu from "../../images/png/Frame.png";
 import userIcon from "../../images/png/Bitmap.png";
@@ -18,6 +18,8 @@ import AddCategoriesModal from "../../components/AddCategoriesModal";
 import { SessionsContext } from "../../context/sessionsContext";
 import "./dashboard.css";
 import EditCategoriesModal from "../../components/EditCategoriesModal";
+import SideBar from "../../components/sideBarmenu";
+import HeaderWebVersion from "../../components/headerWebVersion";
 const DashBoard = () => {
   const {
     categories,
@@ -27,20 +29,12 @@ const DashBoard = () => {
     handleCategoryClick,
     activeCategoryId,
     isEditModalOpen,
-    setEditModalOpen,
     openEditModal,
     closeEditModal,
-    getCardById
+    getCardById,
   } = useContext(CategoriesContext);
 
-  const { sessionsLogout } = useContext(SessionsContext);
-
-  const [openSideMenu, setOpenSideMenu] = useState(false);
-
-  const toggleMenu = () => {
-    console.log(openSideMenu);
-    setOpenSideMenu(!openSideMenu);
-  };
+  const { openSideMenu, toggleMenu, windowWidth } = useContext(SessionsContext);
 
   return (
     <>
@@ -59,22 +53,33 @@ const DashBoard = () => {
             <h1 className="text_circular_color_blue_bold playbookTitle">
               Playbooks
             </h1>
-            <div className="headerFromWebVersion">
-              <h1 className="text_circular_color_blue_title">Playbooks</h1>
-              <div className="headerFromWebVersionDiv">
-                <img src={userIcon} alt="" />
-                <p className="text_circular_color_black_card_content">
-                  Igor Braga
-                </p>
-                <img src={vector2} alt="" />
-              </div>
-            </div>
+            <HeaderWebVersion
+              userIcon={userIcon}
+              vector2={vector2}
+              headerFromWebVersionTittle={"Playbooks"}
+              headerFromWebVersionDisplay={
+                windowWidth > 1024 ? "flex" : "none "
+              }
+              headerFromWebVersionJustifyContent={"space-between"}
+              headerFromWebVersionWidth={"100%"}
+              headerFromWebVersionMarginTop= {"50px"}
+              headerFromWebVersionMarginBotton={"20px"}
+              headerFromWebVersionDivBorder={"1px solid #d8d8d8"}
+              headerFromWebVersionDivWidth={"157px"}
+              headerFromWebVersionDivDisplay={"flex"}
+              headerFromWebVersionDivAlignItens={"center"}
+              headerFromWebVersionDivJustifyContents={"space-between"}
+              headerFromWebVersionDivPadding={"3px 7px"}
+              headerFromWebVersionDivBorderRadius={"19px"}
+              headerFromWebVersionDivBackGroundColor={"#fff"}
+            />
+           
             <div className="responsiveContainerCategoriesCards">
               <div className="categoriesBox">
                 <h1 className="text_circular_label categoriesBoxTitle ">
                   Categorias
                 </h1>
-                <ul>
+                {/* <ul>
                   {categories.map((categories) => (
                     <li
                       key={categories.id}
@@ -96,7 +101,7 @@ const DashBoard = () => {
                   {isEditModalOpen ? (
                     <EditCategoriesModal closeModal={closeEditModal} />
                   ) : null}
-                </ul>
+                </ul> */}
                 <p
                   onClick={openModal}
                   className="text_circular_small_blue_categories_bold"
@@ -112,7 +117,7 @@ const DashBoard = () => {
                       <h1 className="text_circular_color_black_big_card">
                         {card.name}
                       </h1>
-                      <button onClick={() =>getCardById(card.id)}>
+                      <button onClick={() => getCardById(card.id)}>
                         <Link
                           className="text_circular_color_white_title_card"
                           to={`/editcard/${card.id}`}
@@ -131,46 +136,55 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className={`sideMenuBar ${openSideMenu ? "open" : ""}`}>
-            <div className="sideMenuBarCloseButtonDiv ">
-              <Logo width={"153px"} heigth={"39px"} />
-              <button
-                className="text_circular_small_blue_categories_bold"
-                onClick={() => setOpenSideMenu(!openSideMenu)}
-              >
-                x
-              </button>
-            </div>
-            <ul className="text_circular_side_menu_color_grey sideMenuItensContainer ">
-              <li className="sideMenuItens">
-                <img src={chessIcon} alt="" />
-                Playbooks
-              </li>
-              <li className="sideMenuItens">
-                <img src={taskIcon} alt="" />
-                Exemplo
-              </li>
-              <li className="sideMenuItens">
-                <img src={messageIcon} />
-                Exemplo
-              </li>
-              <li className="sideMenuItens">
-                <img src={settingIcon} alt="" />
-                Exemplo
-              </li>
-              <li className="sideMenuItens">
-                <img src={userIconMenu} alt="" />
-                Minha conta
-              </li>
-            </ul>
-            <h3
-              className="sideMenuItens text_circular_side_menu_color_grey"
-              onClick={() => sessionsLogout()}
-            >
-              <img src={exitIcon} alt="" />
-              Sair
-            </h3>
-          </div>
+          <SideBar
+            icon1={chessIcon}
+            name1={"Playbooks"}
+            icon2={taskIcon}
+            name2={"Exemplo"}
+            icon3={messageIcon}
+            name3={"Exemplo"}
+            icon4={settingIcon}
+            name4={"Exemplo"}
+            icon5={userIconMenu}
+            name5={"Minha conta"}
+            exitIcon={exitIcon}
+            sideMenuWidth={"75%"}
+            sideMenuMaxWidth={windowWidth > 1024 ? "300px" : ""}
+            sideMenuHeigth={"100vh"}
+            sideMenuPadding={"16px 20px"}
+            sideMenuBackGroundColor={"#fff"}
+            sideMenuBorderRadius={"17px"}
+            sideMenuBorderRight={"1px solid #d7d7d7"}
+            sideMenuBoxShadow={
+              windowWidth > 1024
+                ? "none"
+                : "24px 0px 200px 0px rgba(0, 0, 0, 0.4)"
+            }
+            sideMenuDisplay={"flex"}
+            sideMenuFlexDirection={"column"}
+            sideMenuPosition={"absolute"}
+            sideMenuTop={"0"}
+            sideMenuLeft={openSideMenu || windowWidth > 1024 ? "0" : "-1000px"}
+            sideMenuTransition={"left 0.3s ease"}
+            sideMenuGap={"25%"}
+            sideMenuPaddingTop={"50px"}
+            sideMenuBarItensDisplay={"flex"}
+            sideMenuBarItensFlexDirection={"column"}
+            sideMenuBarItensGap={"35px"}
+            sideMenuBarItensJustifyContent={"flex-start"}
+            sideMenuBarItensAlignItens={"flex-start"}
+            sideMenuBarCloseButtonDivDisplay={"flex"}
+            sideMenuBarCloseButtonDivJustifyContent={"space-between"}
+            sideMenuBarCloseButtonDivAlignItems={"center"}
+            sideMenuBarCloseButtonBorder={"none"}
+            sideMenuBarCloseButtonColor={"transparent"}
+            sideMenuBarCloseButtonFontSize={"20px"}
+            sideMenuBarCloseButtonDisplay={windowWidth > 1024 ? "none" : "flex"}
+            sideMenuItensDisplay={"flex"}
+            sideMenuItensAlignItens={"center"}
+            sideMenuItensGap={"10px"}
+          />
+
           <div className="cornerContainer">
             <div className="ellipseButton">
               <div className="ellipseContainer">

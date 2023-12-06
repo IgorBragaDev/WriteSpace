@@ -75,6 +75,7 @@ const RegisterPage = () => {
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
                 handle={register("name")}
+                inputPading ={"10px"}
                 {...inputStyles}
               />
               {errors.name && (
@@ -89,6 +90,7 @@ const RegisterPage = () => {
                 display={"flex"}
                 flexDirection={"column"}
                 gap={"25px"}
+                inputPading ={"10px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
@@ -117,6 +119,7 @@ const RegisterPage = () => {
                 grid={"auto auto"}
                 gap={"25px"}
                 inputHeight={"50px"}
+                inputPading ={"10px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
                 inputBorderRadius={"7px"}
@@ -124,6 +127,7 @@ const RegisterPage = () => {
                 marginBottomDivInputsLabel={"10px"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                styledInputContainerMaxWidth={"324px"}
                 handle={register("password")}
                 {...inputStyles}
 
@@ -142,6 +146,7 @@ const RegisterPage = () => {
                 display={"flex"}
                 flexDirection={"column"}
                 gap={"25px"}
+                inputPading ={"10px"}
                 inputHeight={"50px"}
                 inputWidth={"100%"}
                 inputMaxWidth={"324px"}
@@ -149,6 +154,7 @@ const RegisterPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 placeholdertypography="text_circular_placeholder"
+                styledInputContainerMaxWidth={"324px"}
                 handle={register("checkpassword")}
                 {...inputStyles}
 

@@ -32,6 +32,21 @@ export const CategoriesProvider = ({ children }) => {
     getCategoriesCards(categoryId);
   };
 
+  // const getUserCategories = async () => {
+  //   console.log(userToken)
+  //   try {
+  //     const response = await api.get("categories", {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${userToken}`,
+  //       },
+  //     });
+  //     console.log(response)
+  //     setCategories(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const getUserCategories = async () => {
     try {
       const response = await api.get("categories", {

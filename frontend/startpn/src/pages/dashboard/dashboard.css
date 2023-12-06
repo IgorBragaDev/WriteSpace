@@ -10,7 +10,7 @@
     display: none;
   }
 }
-.headerFromWebVersion {
+/* .headerFromWebVersion {
   display: none;
   @media (min-width: 1024px) {
     display: flex;
@@ -19,10 +19,10 @@
     margin: 0 auto;
     margin-bottom: 70px;
     margin-top: 20px;
-    padding-top: 50px;
+    padding-top: 30px;
   }
-}
-.headerFromWebVersionDiv {
+} */
+/* .headerFromWebVersionDiv {
   border: 1px solid #d8d8d8;
   width: 157px;
   display: flex;
@@ -31,7 +31,7 @@
   padding: 3px 7px;
   border-radius: 19px;
   background-color: #fff;
-}
+} */
 
 .containerDashboard {
   padding: 16px 20px;
@@ -49,15 +49,16 @@
 .responsiveContainerCategoriesCards {
   @media (min-width: 1024px) {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 100px;
   }
 }
 .cardsUL {
   @media (min-width: 1024px) {
-    width: 60%;
+    width: 70%;
     overflow-y: auto;
     height: 70vh;
+    padding-right: 15px;
   }
 }
 .headerDivDashBoard {
@@ -70,60 +71,6 @@
 .dropdownButton {
   background: none;
   border: none;
-}
-
-.sideMenuBar {
-  width: 75%;
-  height: 100vh;
-  padding: 16px 20px;
-  background-color: #fff;
-  border-radius: 17px;
-  border-right: 1px solid #d7d7d7;
-  box-shadow: 24px 0px 200px 0px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: absolute;
-  top: 0;
-  left: -1000px;
-  transition: left 0.3s ease;
-
-  @media (min-width: 1024px) {
-    left: 0;
-    width: 100%;
-    max-width: 300px;
-    box-shadow: none;
-  }
-}
-
-.sideMenuBar.open {
-  left: 0;
-}
-
-.sideMenuBarCloseButtonDiv {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.sideMenuBarCloseButtonDiv button {
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  @media (min-width: 1024px) {
-    display: none;
-  }
-}
-.sideMenuItensContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.sideMenuItens {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .DashContainer {
@@ -196,6 +143,12 @@ img {
     background-color: #fff;
   }
 }
+.categoriesBox ul li {
+  cursor: pointer;
+}
+.categoriesBox p {
+  cursor: pointer;
+}
 .categoriesBox ul li img {
   display: none;
 }
@@ -206,7 +159,7 @@ img {
 
 .categoriesBox ul li.activeCategory {
   display: flex;
-  gap: 20px ;
+  gap: 20px;
   border-radius: 8px;
   background: #f7f9fb;
 }
@@ -248,10 +201,9 @@ img {
   padding-bottom: 9px;
 }
 
-.cardBoxTitle a{
+.cardBoxTitle a {
   text-decoration: none;
 }
-
 
 .cardBoxTitle button {
   border-radius: 60px;

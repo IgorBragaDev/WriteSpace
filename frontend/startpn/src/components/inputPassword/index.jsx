@@ -23,6 +23,8 @@ const InputPassword = ({
   flexDirection,
   divWidth,
   divMaxWidth,
+  inputPading,
+  styledInputContainerMaxWidth
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -43,6 +45,7 @@ const InputPassword = ({
     minWidth: inputMinWidth,
     borderRadius: inputBorderRadius,
     border: inputBorder,
+    padding : inputPading,
     position: "relative",
   };
   const eyeIconStyle = {
@@ -55,6 +58,7 @@ const InputPassword = ({
   const styledInputContainer = {
     position: "relative",
     width: "100%",
+    maxWidth : styledInputContainerMaxWidth
   };
 
   return (
