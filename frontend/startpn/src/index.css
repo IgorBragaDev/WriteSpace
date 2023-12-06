@@ -1,3 +1,11 @@
+/* IMPORT FONTS*/
+@font-face {
+  font-family: "Poppins";
+  src: url('../src/fonts/Poppings/Poppins-Regular.ttf') format('truetype');
+}
+
+
+
 /* FONTES AZUIS*/
 
 .text_circular_color_blue {
