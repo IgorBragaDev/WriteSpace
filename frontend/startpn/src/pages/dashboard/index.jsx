@@ -79,7 +79,7 @@ const DashBoard = () => {
                 <h1 className="text_circular_label categoriesBoxTitle ">
                   Categorias
                 </h1>
-                {/* <ul>
+                <ul>
                   {categories.map((categories) => (
                     <li
                       key={categories.id}
@@ -101,7 +101,7 @@ const DashBoard = () => {
                   {isEditModalOpen ? (
                     <EditCategoriesModal closeModal={closeEditModal} />
                   ) : null}
-                </ul> */}
+                </ul>
                 <p
                   onClick={openModal}
                   className="text_circular_small_blue_categories_bold"
