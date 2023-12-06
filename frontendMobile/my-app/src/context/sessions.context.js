@@ -12,7 +12,6 @@ export const SessionsProvider = ({ children }) => {
     try {
       const response = await api.post("sessions/login", data);
       await AsyncStorage.setItem("authToken", response.data.token);
-
       navigation.navigate("dashboard");
     } catch (error) {
       console.log(error, "algo deu errado na conection");

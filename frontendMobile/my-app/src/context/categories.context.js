@@ -1,0 +1,82 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Children, createContext, useEffect, useState } from "react";
+import api from "../services/api";
+
+export const CategoriesContext = createContext({});
+
+export const CateoriesProvider = ({ children }) => {
+  const [userToken, setUserToken] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    const fetchUserToken = async () => {
+      try {
+        const authToken = await AsyncStorage.getItem("authToken"); // Use AsyncStorage para armazenar o token no React Native
+        setUserToken(authToken);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchUserToken();
+  }, []);
+
+  const getUserCategories = async () => {
+    try {
+      const response = await api.get("categories", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    const getUserCategories = async () => {
+      try {
+        const response = await api.get("categories", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userToken}`,
+          },
+        });
+        console.log("entrei aqui");
+        setCategories(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (userToken) {
+      getUserCategories();
+    }
+  }, [userToken]);
+
+  const getCategoriesCards = async (id) => {
+    console.log(id)
+    try {
+      const response = await api.get(`methodology/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      
+      setCards(response.data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <CategoriesContext.Provider
+      value={{ categories, getUserCategories, getCategoriesCards,cards }}
+    >
+      {children}
+    </CategoriesContext.Provider>
+  );
+};

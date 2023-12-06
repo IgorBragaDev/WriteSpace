@@ -6,20 +6,45 @@ import {
   Image,
   Modal,
   StyleSheet,
+  FlatList,
 } from "react-native";
 import { SessionsContext } from "../../context/sessions.context";
 import frame from "../../images/png/Frame.png";
 import logo from "../../images/png/logo.png";
 import userIcon from "../../images/svg/Bitmap.png";
+import logout from "../../images/svg/logout.svg";
+import { CategoriesContext } from "../../context/categories.context";
+import HTMLView from "react-native-htmlview";
 
 const DashBoard = () => {
   const { sessionsLogout } = useContext(SessionsContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
-
+  const { categories, getUserCategories, getCategoriesCards, cards } =
+    useContext(CategoriesContext);
+  const data = [{}];
   const toggleMenu = () => {
     setOpenSideMenu(!openSideMenu);
   };
-
+  const renderCategoryItem = ({ item }) => (
+    <View style={styles.categoryItem}>
+      <TouchableOpacity onPress={() => getCategoriesCards(item.id)}>
+        <Text style={styles.categoryItemText}>{item.title}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+  const renderCards = ({ item }) => (
+    <View style={styles.cardContent}>
+      <View style={styles.cardTitle}>
+        <Text>{item.name}</Text>
+        <TouchableOpacity style={styles.editCardButton}>
+          <Text>Editar</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.card}>
+        <HTMLView value={item.text} />
+      </View>
+    </View>
+  );
   return (
     <View style={styles.dashboardPageContainer}>
       <View style={styles.containerDashboard}>
@@ -33,6 +58,23 @@ const DashBoard = () => {
           <Image source={logo} />
           <Image source={userIcon} />
         </View>
+      </View>
+      <View style={styles.centeredContainer}>
+        <View style={styles.categoriesContainer}>
+          <Text style={styles.cateriesTitle}>Categorias</Text>
+          <FlatList
+            data={categories}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={renderCategoryItem}
+          />
+          <TouchableOpacity style={styles.buttonAddCategory}>
+            <Text>+ Adiconar categoria</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View style={styles.cardsContainer}>
+        <FlatList data={cards} renderItem={renderCards} />
       </View>
 
       {/* Modal */}
@@ -49,6 +91,7 @@ const DashBoard = () => {
             <TouchableOpacity onPress={() => toggleMenu()}>
               <Text>Fechar Menu</Text>
             </TouchableOpacity>
+            <FlatList></FlatList>
           </View>
         </View>
       </Modal>
@@ -80,18 +123,83 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    flexDirection: "row", // Alterado para flexDirection: "row"
-    justifyContent: "flex-start", // Alterado para justifyContent: "flex-end"
-    alignItems: "flex-end", // Alterado para alignItems: "flex-end"
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
   },
   menuContent: {
-    backgroundColor: "white",
-    width: "80%", // Ajuste conforme necessário
-    padding: 20,
+    width: "80%",
+    paddingTop: 70,
+    paddingLeft: 30,
     height: "100%",
     marginTop: 200,
-    backgroundColor: "red",
+    backgroundColor: "#fff",
   },
+  categoriesContainer: {
+    width: "90%",
+    paddingTop: 10,
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#D7D7D7",
+  },
+  cateriesTitle: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#d8d8d8",
+    paddingBottom: 8, // Espaçamento inferior para separar do conteúdo abaixo
+    paddingHorizontal: 10,
+    textAlign: "left",
+    fontWeight: "bold", // Adicione negrito se desejar
+  },
+  centeredContainer: {
+    marginTop: 20,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  categoryItem: {
+    paddingVertical: 8,
+    paddingHorizontal: 17,
+  },
+  categoryItemText: {
+    color: "#476EE6",
+  },
+  buttonAddCategory: {
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+  },
+  cardsContainer: {
+    flex: 1,
+  },
+  cardContent: {
+    borderWidth: 1,
+    borderColor: "#d8d8d8",
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    width: "90%",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginVertical: 10,
+  },
+  card: {
+    padding: 10,
+    overflow: "hidden",
+  },
+  cardTitle: {
+    padding: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "#d8d8d8",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  editCardButton:{
+    backgroundColor: "#476EE6",
+    padding: 10,
+    borderRadius: 20,
+    width: "20%",
+    
+    alignItems: "center"
+  }
 });
 
 export default DashBoard;

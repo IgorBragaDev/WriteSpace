@@ -69,7 +69,7 @@ export default function App() {
       </View>
 
       <ButtonForms
-        buttonText={"Cadastrar"}
+        buttonText={"Entrar"}
         buttonBoxAlign={"center"}
         buttonBackGroundColor={"#476EE6"}
         buttonBorderWidth={1}
