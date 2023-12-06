@@ -11,17 +11,22 @@ import {
 import { SessionsContext } from "../../context/sessions.context";
 import frame from "../../images/png/Frame.png";
 import logo from "../../images/png/logo.png";
+import elipse from "../../images/svg/ellipse.svg";
+import plusIcon from "../../images/svg/plusSignal.svg"
 import userIcon from "../../images/svg/Bitmap.png";
 import logout from "../../images/svg/logout.svg";
 import { CategoriesContext } from "../../context/categories.context";
 import HTMLView from "react-native-htmlview";
+import { useNavigation } from "@react-navigation/native";
 
 const DashBoard = () => {
   const { sessionsLogout } = useContext(SessionsContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const { categories, getUserCategories, getCategoriesCards, cards } =
     useContext(CategoriesContext);
-  const data = [{}];
+
+    const navigation = useNavigation();
+
   const toggleMenu = () => {
     setOpenSideMenu(!openSideMenu);
   };
@@ -59,6 +64,12 @@ const DashBoard = () => {
           <Image source={userIcon} />
         </View>
       </View>
+      
+      <TouchableOpacity style={styles.ellipseButtonContainer} onPress={()=> navigation.navigate("createCard")}>
+        <Image source={elipse} style={styles.ellipseButon} />
+        <Text style={styles.plusText}>+</Text>
+      </TouchableOpacity>
+
       <View style={styles.centeredContainer}>
         <View style={styles.categoriesContainer}>
           <Text style={styles.cateriesTitle}>Categorias</Text>
@@ -68,7 +79,7 @@ const DashBoard = () => {
             renderItem={renderCategoryItem}
           />
           <TouchableOpacity style={styles.buttonAddCategory}>
-            <Text>+ Adiconar categoria</Text>
+            <Text >+ Adiconar categoria</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -77,7 +88,6 @@ const DashBoard = () => {
         <FlatList data={cards} renderItem={renderCards} />
       </View>
 
-      {/* Modal */}
       <Modal
         animationType="slide" // Ajuste para "slide" para ter o efeito desejado
         transparent={true}
@@ -190,16 +200,32 @@ const styles = StyleSheet.create({
     borderBottomColor: "#d8d8d8",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
-  editCardButton:{
+  editCardButton: {
     backgroundColor: "#476EE6",
     padding: 10,
     borderRadius: 20,
     width: "20%",
-    
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
+  ellipseButon: {
+    backgroundColor: "#476EE6",
+    borderRadius: 50,
+  },
+  ellipseButtonContainer: {
+    position: 'absolute',
+    bottom: 40, 
+    right: 25, 
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex:1000
+  },
+  plusText: {
+    position: "absolute",
+    color: "white", 
+    fontSize: 30, 
+  },
 });
 
 export default DashBoard;

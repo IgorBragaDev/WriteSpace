@@ -22,7 +22,6 @@ export default function App() {
   } = useForm({});
 
   const submit = async (data) => {
-    console.log(data);
     await sessionsLogin(data);
   };
 
@@ -95,11 +94,11 @@ const styles = StyleSheet.create({
     padding: 8,
     display: "flex",
     justifyContent: "center",
-    gap: "70px",
+    // gap: "70px",
   },
   logoContainer: {
     display: "flex",
-    gap: "35",
+    // gap: "35",
     alignItems: "center",
   },
   textCircularBlue: {
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
   termsContainer: {
     display: "flex",
     flexDirection: "row",
-    gap: "10",
+    // gap: "10",
   },
   termsText: {
     flex: 1,

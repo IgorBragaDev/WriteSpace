@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   logoContainer: {
     marginTop: 50,
     display: "flex",
-    gap: "35",
+    // gap: "35",
   },
   textCircularBlue: {
     fontSize: 30,
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
   termsContainer: {
     display: "flex",
     flexDirection: "row",
-    gap: "10",
+    // gap: "10",
   },
   termsText: {
     flex: 1,

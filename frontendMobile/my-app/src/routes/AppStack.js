@@ -6,6 +6,7 @@ import LoginScreen from "../pages/loginPage/index"; // Substitua pelo caminho re
 import { SessionsProvider } from "../context/sessions.context";
 import DashBoard from "../pages/dashBoard";
 import { CateoriesProvider } from "../context/categories.context";
+import CreateCard from "../pages/createCard";
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const AppStack = () => {
               options={{ title: "Login" }}
             />
             <Stack.Screen name="dashboard" component={DashBoard} />
+            <Stack.Screen name="createCard" component={CreateCard}/>
           </Stack.Navigator>
         </CateoriesProvider>
       </SessionsProvider>
