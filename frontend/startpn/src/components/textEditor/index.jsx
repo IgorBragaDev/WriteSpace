@@ -2,8 +2,12 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 const TextEditor = ({ value, setValue }) => {
+  const Font = ReactQuill.Quill.import("formats/font");
+  Font.whitelist = ["mirza", "roboto"]; // allow ONLY these fonts and the default
+  ReactQuill.Quill.register(Font, true);
+  
   const toolBarOptions = [
-    [{ font: [] }],
+    [{ font:[] }],
     [{ size: ["small", false, "large", "huge"] }],
     ["bold", "italic", "underline", "strike"],
     [{ color: [] }, { background: [] }],
@@ -13,6 +17,7 @@ const TextEditor = ({ value, setValue }) => {
     ["link", "image"],
     ["clean"],
   ];
+
   const module = {
     toolbar: {
       container: toolBarOptions,
@@ -34,8 +39,8 @@ const TextEditor = ({ value, setValue }) => {
     <>
       <ReactQuill
         modules={module}
-        theme="snow"  // Escolha o tema 'bubble' para personalizar o background
-        style={{ background: "#fff", height: "200px" }}  // Adicione o estilo para definir o background
+        theme="snow" // Escolha o tema 'bubble' para personalizar o background
+        style={{ background: "#fff", height: "200px" }} // Adicione o estilo para definir o background
         value={value}
         onChange={setValue}
       />

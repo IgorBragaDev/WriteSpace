@@ -47,6 +47,7 @@ const LoginPage = () => {
                 inputBorder={"1px solid #D7D7D7"}
                 labeltypography="text_circular_label"
                 marginBottomDivInputsLabel={"10px"}
+                inputPading={"8px"}
                 placeholdertypography="text_circular_placeholder"
                 handle={register("email")}
               />
@@ -70,6 +71,7 @@ const LoginPage = () => {
               labeltypography="text_circular_label"
               placeholdertypography="text_circular_placeholder"
               styledInputContainerMaxWidth={"419px"}
+              inputPading={"8px"}
               handle={register("password")}
             />
             {errors.password && <p>{errors.password.message}</p>}
