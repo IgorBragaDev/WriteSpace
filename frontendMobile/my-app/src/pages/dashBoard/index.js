@@ -15,14 +15,16 @@ import elipse from "../../images/svg/ellipse.svg";
 import plusIcon from "../../images/svg/plusSignal.svg";
 import userIcon from "../../images/svg/Bitmap.png";
 import logout from "../../images/svg/logout.svg";
+import pen from "../../images/svg/pen.svg";
 import { CategoriesContext } from "../../context/categories.context";
 import HTMLView from "react-native-htmlview";
 import { useNavigation } from "@react-navigation/native";
 import AddCategoriesModal from "../../components/addCategoriesModal";
-
+import fonts from "../../global/styles/fonts";
 const DashBoard = () => {
   const { sessionsLogout } = useContext(SessionsContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const {
     categories,
     getUserCategories,
@@ -36,19 +38,36 @@ const DashBoard = () => {
   const toggleMenu = () => {
     setOpenSideMenu(!openSideMenu);
   };
+  const handleCategoryPress = (categoryId) => {
+    setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
+  };
   const renderCategoryItem = ({ item }) => (
     <View style={styles.categoryItem}>
-      <TouchableOpacity onPress={() => getCategoriesCards(item.id)}>
-        <Text style={styles.categoryItemText}>{item.title}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          handleCategoryPress(item.id);
+          getCategoriesCards(item.id);
+        }}
+        style={[
+          styles.categoryItemButton,
+          selectedCategory === item.id && styles.selectedCategory,
+        ]}
+      >
+        <Text style={fonts.textCircularSmallBlueCategories}>{item.title}</Text>
       </TouchableOpacity>
+      {selectedCategory === item.id && (
+        <TouchableOpacity onPress={() => handleEditCategory(item.id)}>
+          <Image source={pen} style={styles.editIcon} />
+        </TouchableOpacity>
+      )}
     </View>
   );
   const renderCards = ({ item }) => (
     <View style={styles.cardContent}>
       <View style={styles.cardTitle}>
-        <Text>{item.name}</Text>
+        <Text style={fonts.textCircularColorBlackBigCard}>{item.name}</Text>
         <TouchableOpacity style={styles.editCardButton}>
-          <Text>Editar</Text>
+          <Text style={fonts.textCircularColorWhiteTitleCard}>Editar</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.card}>
@@ -81,14 +100,26 @@ const DashBoard = () => {
 
       <View style={styles.centeredContainer}>
         <View style={styles.categoriesContainer}>
-          <Text style={styles.cateriesTitle}>Categorias</Text>
+          <View style={styles.cateriesTitle}>
+            <Text style={fonts.textCircularSmallBoldBlack}>Categorias</Text>
+          </View>
           <FlatList
             data={categories}
             keyExtractor={(item) => item.id.toString()}
             renderItem={renderCategoryItem}
           />
-          <TouchableOpacity style={styles.buttonAddCategory} onPress={()=> setAddCategoriesModal(true)}>
-            <Text>+ Adiconar categoria</Text>
+          <TouchableOpacity
+            style={styles.buttonAddCategory}
+            onPress={() => setAddCategoriesModal(true)}
+          >
+            <Text
+              style={[
+                styles.addCategoryButton,
+                fonts.textCircularSmallBlueCategories,
+              ]}
+            >
+              + Adiconar categoria
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -98,7 +129,7 @@ const DashBoard = () => {
       </View>
 
       <Modal
-        animationType="slide" // Ajuste para "slide" para ter o efeito desejado
+        animationType="slide"
         transparent={true}
         visible={openSideMenu}
         onRequestClose={() => toggleMenu()}
@@ -114,7 +145,7 @@ const DashBoard = () => {
           </View>
         </View>
       </Modal>
-      <AddCategoriesModal/>
+      <AddCategoriesModal />
     </View>
   );
 };
@@ -235,6 +266,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     color: "white",
     fontSize: 30,
+  },
+  categoryItemButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 17,
+  },
+  selectedCategory: {
+    backgroundColor: "#F7F9FB",
+  },
+  editIcon: {
+    backgroundColor: "#F7F9FB",
   },
 });
 

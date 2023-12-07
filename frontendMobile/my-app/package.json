@@ -24,7 +24,8 @@
     "react-native-cn-quill": "^0.7.18",
     "react-native-htmlview": "^0.17.0",
     "react-native-render-html": "^6.3.4",
-    "react-native-size-matters": "^0.4.2"
+    "react-native-size-matters": "^0.4.2",
+    "react-native-svg": "^14.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -17,9 +17,14 @@ const AddCategoriesModal = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm();
-
+  const onSubmit = async (data) => {
+    await addCategories(data);
+    setValue("title", "");
+    setAddCategoriesModal(false);
+  };
   return (
     <Modal
       animationType="slide"
@@ -63,7 +68,7 @@ const AddCategoriesModal = () => {
 
               <TouchableOpacity
                 style={styles.submitButton}
-                onPress={handleSubmit(addCategories)}
+                onPress={handleSubmit(onSubmit)}
               >
                 <Text style={styles.buttonText}>Cadastrar</Text>
               </TouchableOpacity>
