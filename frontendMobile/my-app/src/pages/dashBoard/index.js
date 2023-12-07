@@ -12,20 +12,26 @@ import { SessionsContext } from "../../context/sessions.context";
 import frame from "../../images/png/Frame.png";
 import logo from "../../images/png/logo.png";
 import elipse from "../../images/svg/ellipse.svg";
-import plusIcon from "../../images/svg/plusSignal.svg"
+import plusIcon from "../../images/svg/plusSignal.svg";
 import userIcon from "../../images/svg/Bitmap.png";
 import logout from "../../images/svg/logout.svg";
 import { CategoriesContext } from "../../context/categories.context";
 import HTMLView from "react-native-htmlview";
 import { useNavigation } from "@react-navigation/native";
+import AddCategoriesModal from "../../components/addCategoriesModal";
 
 const DashBoard = () => {
   const { sessionsLogout } = useContext(SessionsContext);
   const [openSideMenu, setOpenSideMenu] = useState(false);
-  const { categories, getUserCategories, getCategoriesCards, cards } =
-    useContext(CategoriesContext);
+  const {
+    categories,
+    getUserCategories,
+    getCategoriesCards,
+    cards,
+    setAddCategoriesModal,
+  } = useContext(CategoriesContext);
 
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const toggleMenu = () => {
     setOpenSideMenu(!openSideMenu);
@@ -64,8 +70,11 @@ const DashBoard = () => {
           <Image source={userIcon} />
         </View>
       </View>
-      
-      <TouchableOpacity style={styles.ellipseButtonContainer} onPress={()=> navigation.navigate("createCard")}>
+
+      <TouchableOpacity
+        style={styles.ellipseButtonContainer}
+        onPress={() => navigation.navigate("createCard")}
+      >
         <Image source={elipse} style={styles.ellipseButon} />
         <Text style={styles.plusText}>+</Text>
       </TouchableOpacity>
@@ -78,8 +87,8 @@ const DashBoard = () => {
             keyExtractor={(item) => item.id.toString()}
             renderItem={renderCategoryItem}
           />
-          <TouchableOpacity style={styles.buttonAddCategory}>
-            <Text >+ Adiconar categoria</Text>
+          <TouchableOpacity style={styles.buttonAddCategory} onPress={()=> setAddCategoriesModal(true)}>
+            <Text>+ Adiconar categoria</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -105,6 +114,7 @@ const DashBoard = () => {
           </View>
         </View>
       </Modal>
+      <AddCategoriesModal/>
     </View>
   );
 };
@@ -214,17 +224,17 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   ellipseButtonContainer: {
-    position: 'absolute',
-    bottom: 40, 
-    right: 25, 
+    position: "absolute",
+    bottom: 40,
+    right: 25,
     alignItems: "center",
     justifyContent: "center",
-    zIndex:1000
+    zIndex: 1000,
   },
   plusText: {
     position: "absolute",
-    color: "white", 
-    fontSize: 30, 
+    color: "white",
+    fontSize: 30,
   },
 });
 

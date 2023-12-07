@@ -8,6 +8,7 @@ export const CateoriesProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [categories, setCategories] = useState([]);
   const [cards, setCards] = useState([]);
+  const [addCategoriesModal, setAddCategoriesModal] = useState(null);
 
   useEffect(() => {
     const fetchUserToken = async () => {
@@ -56,7 +57,7 @@ export const CateoriesProvider = ({ children }) => {
   }, [userToken]);
 
   const getCategoriesCards = async (id) => {
-    console.log(id)
+    console.log(id);
     try {
       const response = await api.get(`methodology/${id}`, {
         headers: {
@@ -64,17 +65,39 @@ export const CateoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
-      
-      setCards(response.data);
 
+      setCards(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addCategories = async (data) => {
+    try {
+      const response = await api.post("categories", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      });
+      getUserCategories();
+      setAddCategoriesModal(false)
     } catch (error) {
       console.log(error);
     }
   };
 
+
   return (
     <CategoriesContext.Provider
-      value={{ categories, getUserCategories, getCategoriesCards,cards }}
+      value={{
+        categories,
+        getUserCategories,
+        getCategoriesCards,
+        cards,
+        addCategoriesModal,
+        setAddCategoriesModal,
+        addCategories
+      }}
     >
       {children}
     </CategoriesContext.Provider>
