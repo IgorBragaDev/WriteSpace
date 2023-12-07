@@ -80,24 +80,28 @@ const DashBoard = () => {
                   Categorias
                 </h1>
                 <ul>
-                  {categories.map((categories) => (
-                    <li
-                      key={categories.id}
-                      className={
-                        categories.id === activeCategoryId
-                          ? "activeCategory"
-                          : ""
-                      }
-                    >
-                      <p
-                        className="text_circular_small_blue_categories"
-                        onClick={() => handleCategoryClick(categories.id)}
+                  {categories.length > 0 ? (
+                    categories.map((category) => (
+                      <li
+                        key={category.id}
+                        className={
+                          category.id === activeCategoryId
+                            ? "activeCategory"
+                            : ""
+                        }
                       >
-                        {categories.title}
-                      </p>
-                      <img onClick={() => openEditModal()} src={pen} alt="" />
-                    </li>
-                  ))}
+                        <p
+                          className="text_circular_small_blue_categories"
+                          onClick={() => handleCategoryClick(category.id)}
+                        >
+                          {category.title}
+                        </p>
+                        <img onClick={() => openEditModal()} src={pen} alt="" />
+                      </li>
+                    ))
+                  ) : (
+                    <p className="text_circular_label">Aguardando carregar...</p>
+                  )}
                   {isEditModalOpen ? (
                     <EditCategoriesModal closeModal={closeEditModal} />
                   ) : null}

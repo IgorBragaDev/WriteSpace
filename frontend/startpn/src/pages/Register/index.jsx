@@ -78,9 +78,7 @@ const RegisterPage = () => {
                 inputPading ={"10px"}
                 {...inputStyles}
               />
-              {errors.name && (
-                <p className="text_circular_small_red">{errors.name.message}</p>
-              )}
+              
               <Input
                 htmlFor={"email"}
                 id={"email"}
@@ -103,11 +101,7 @@ const RegisterPage = () => {
                 {...inputStyles}
 
               />
-              {errors.email && (
-                <p className="text_circular_small_red">
-                  {errors.email.message}
-                </p>
-              )}
+             
               <InputPassword
                 htmlFor={"password"}
                 id={"password"}
@@ -132,11 +126,7 @@ const RegisterPage = () => {
                 {...inputStyles}
 
               />
-              {errors.password && (
-                <p className="text_circular_small_red">
-                  {errors.password.message}
-                </p>
-              )}
+              
               <InputPassword
                 htmlFor={"confirmpassword"}
                 id={"confirmpassword"}
@@ -159,7 +149,7 @@ const RegisterPage = () => {
                 {...inputStyles}
 
               />
-              {errors.checkpassword && <p>{errors.checkpassword.message}</p>}
+              
             </div>
 
             <div className="checkBoxContainer">
