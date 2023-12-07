@@ -21,7 +21,7 @@ import logOutIcon from "../../images/png/logout.png";
 import { CategoriesContext } from "../../context/categories.context";
 import HTMLView from "react-native-htmlview";
 import { useNavigation } from "@react-navigation/native";
-import AddCategoriesModal from "../../components/addCategoriesModal";
+import AddCategoriesModal from "../../components/addcategoriesmodal";
 import fonts from "../../global/styles/fonts";
 const DashBoard = () => {
   const { sessionsLogout } = useContext(SessionsContext);
@@ -170,7 +170,10 @@ const DashBoard = () => {
               </View>
             </View>
             <View style={styles.inconMenu}>
-              <TouchableOpacity style={{flexDirection:"row", paddingRight:10}} onPress={() => sessionsLogout()}>
+              <TouchableOpacity
+                style={{ flexDirection: "row", paddingRight: 10 }}
+                onPress={() => sessionsLogout()}
+              >
                 <Image source={logOutIcon} />
                 <Text>Sair</Text>
               </TouchableOpacity>

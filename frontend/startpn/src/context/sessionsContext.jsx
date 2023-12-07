@@ -13,6 +13,7 @@ export const SessionsProvider = ({ children }) => {
   const sessionsLogin = async (data) => {
     try {
       const response = await api.post("sessions/login", data);
+      console.log(response)
       window.localStorage.setItem("authToken", response.data.token);
       toast.success("Logado com sucesso", { autoClose: 2000 });
       navigate("/dashboard");

@@ -58,6 +58,7 @@ export const CategoriesProvider = ({ children }) => {
             Authorization: `Bearer ${userToken}`,
           },
         });
+        console.log(response)
         setCategories(response.data);
       } catch (error) {
         console.log(error);

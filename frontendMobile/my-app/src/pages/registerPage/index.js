@@ -132,8 +132,11 @@ export default function App() {
         buttonTextColor={"#FFF"}
         onPress={handleSubmit(submit)}
       />
-      <Text style={styles.linkTologin} onPress={() => navigation.navigate("Login")}>
-        Ja tenho uma conta <Text style={styles.linkTologinBlue}> LOGAR </Text> 
+      <Text
+        style={styles.linkTologin}
+        onPress={() => navigation.navigate("Login")}
+      >
+        Ja tenho uma conta <Text style={styles.linkTologinBlue}> LOGAR </Text>
       </Text>
     </View>
   );
@@ -145,7 +148,7 @@ const styles = StyleSheet.create({
     padding: 8,
     display: "flex",
     justifyContent: "space-evenly",
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   logoContainer: {
     marginTop: 50,
@@ -186,13 +189,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderColor: "#476EE6",
   },
-  linkTologin:{
-    textAlign: 'center', 
-    marginTop: 20, 
-    fontSize: 16, 
-    fontWeight: '600',
+  linkTologin: {
+    textAlign: "center",
+    marginTop: 20,
+    fontSize: 16,
+    fontWeight: "600",
   },
-  linkTologinBlue:{
+  linkTologinBlue: {
     color: "#476EE6",
-  }
+  },
 });
