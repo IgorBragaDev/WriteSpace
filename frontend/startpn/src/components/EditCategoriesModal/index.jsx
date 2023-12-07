@@ -4,23 +4,19 @@ import { useContext } from "react";
 import { CategoriesContext } from "../../context/categoriesContext";
 import { insetCategorySchema } from "../../schemas/insert.category.schema";
 
-// Componente do modal para editar categoria
 const EditCategoriesModal = ({ categoryId, closeModal }) => {
   const { editCategories } = useContext(CategoriesContext);
 
   const {
     register,
     handleSubmit,
-    setValue, // Adicione a função setValue do react-hook-form para preencher os campos com os valores existentes
-    formState: { errors },
+    setValue, 
   } = useForm({
     resolver: zodResolver(insetCategorySchema),
   });
 
-  // Função para popular os campos do formulário com os valores existentes da categoria
   const populateFormFields = (category) => {
     setValue("title", category.title);
-    // Adicione outros campos conforme necessário
   };
 
 

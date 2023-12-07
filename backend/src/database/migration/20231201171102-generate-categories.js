@@ -20,11 +20,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      createdAt: { // Corrigido para seguir a convenção padrão
+      createdAt: { 
         type: Sequelize.DATE,
         allowNull: false,
       },
-      updatedAt: { // Corrigido para seguir a convenção padrão
+      updatedAt: { 
         type: Sequelize.DATE,
         allowNull: false,
       },

@@ -7,7 +7,6 @@ export default function App() {
     async function loadFonts() {
       await Font.loadAsync({
         "Poppins-Regular": require("./assets/fonts/Poppins-Regular.ttf"),
-        // Adicione outras variações da fonte, se houver (por exemplo, bold, italic, etc.)
       });
     }
 

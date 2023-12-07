@@ -7,7 +7,7 @@ class ControllerUsers {
   async register(req, res) {
     const { name, email, password } = req.body;
     try {
-      // Verificar se o e-mail já existe no banco de dados
+      
       const existingUser = await User.findOne({
         where: {
           email: {
@@ -37,7 +37,7 @@ class ControllerUsers {
     const { email, password } = req.body;
 
     try {
-      // Verificar se o e-mail existe no banco de dados
+     
       const user = await User.findOne({
         where: {
           email: {
@@ -56,9 +56,8 @@ class ControllerUsers {
         return res.status(401).json({ error: "Credenciais inválidas" });
       }
 
-      // Gerar token JWT
       const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-        expiresIn: "1h", // Pode ajustar o tempo de expiração conforme necessário
+        expiresIn: "1h", 
       });
 
       res.status(200).json({ token });

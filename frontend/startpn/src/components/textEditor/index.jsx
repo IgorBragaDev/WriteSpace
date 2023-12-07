@@ -21,26 +21,15 @@ const TextEditor = ({ value, setValue }) => {
   const module = {
     toolbar: {
       container: toolBarOptions,
-      // handlers: {
-      //   // Adiciona um manipulador para tratar a inserção de links
-      //   link: () => {
-      //     const url = window.prompt("Insira o URL do link:");
-      //     if (url) {
-      //       const editor = Quill.getEditor();
-      //       const selection = editor.getSelection();
-      //       editor.format("link", url);
-      //       editor.setSelection(selection);
-      //     }
-      //   },
-      // }
+     
     },
   };
   return (
     <>
       <ReactQuill
         modules={module}
-        theme="snow" // Escolha o tema 'bubble' para personalizar o background
-        style={{ background: "#fff", height: "200px" }} // Adicione o estilo para definir o background
+        theme="snow" 
+        style={{ background: "#fff", height: "200px" }} 
         value={value}
         onChange={setValue}
       />
