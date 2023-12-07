@@ -15,11 +15,13 @@ const ButtonForms = ({
   buttonTextFontSize,
   buttonTextFontWeigth,
   buttonTextColor,
-  onPress
+  onPress,
+  buttonBoxPaddingTop
 }) => {
   const styles = StyleSheet.create({
     buttonBox: {
       alignItems: buttonBoxAlign,
+      paddingTop : buttonBoxPaddingTop
     },
     button: {
       backgroundColor: buttonBackGroundColor,

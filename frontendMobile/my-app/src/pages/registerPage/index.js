@@ -32,7 +32,6 @@ export default function App() {
   };
 
   const submit = (data) => {
-    console.log(data);
     register(data);
   };
   return (
@@ -146,6 +145,7 @@ const styles = StyleSheet.create({
     padding: 8,
     display: "flex",
     justifyContent: "space-evenly",
+    backgroundColor: "#fff"
   },
   logoContainer: {
     marginTop: 50,

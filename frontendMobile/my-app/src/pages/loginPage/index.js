@@ -83,6 +83,7 @@ export default function App() {
         buttonTextFontWeigth={"600"}
         buttonTextColor={"#FFF"}
         onPress={handleSubmit(submit)}
+        buttonBoxPaddingTop={50}
       />
     </View>
   );
@@ -94,11 +95,10 @@ const styles = StyleSheet.create({
     padding: 8,
     display: "flex",
     justifyContent: "center",
-    // gap: "70px",
+    backgroundColor: "#fff",
   },
   logoContainer: {
     display: "flex",
-    // gap: "35",
     alignItems: "center",
   },
   textCircularBlue: {
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
   termsContainer: {
     display: "flex",
     flexDirection: "row",
-    // gap: "10",
   },
   termsText: {
     flex: 1,

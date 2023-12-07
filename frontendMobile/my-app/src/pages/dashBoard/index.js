@@ -12,10 +12,12 @@ import { SessionsContext } from "../../context/sessions.context";
 import frame from "../../images/png/Frame.png";
 import logo from "../../images/png/logo.png";
 import elipse from "../../images/svg/ellipse.svg";
-import plusIcon from "../../images/svg/plusSignal.svg";
+import chesIcon from "../../images/png/chessicon.png";
 import userIcon from "../../images/svg/Bitmap.png";
-import logout from "../../images/svg/logout.svg";
-import pen from "../../images/svg/pen.svg";
+import taskIcon from "../../images/png/tasksquare.png";
+import messageIcon from "../../images/png/message.png";
+import settingIcon from "../../images/png/setting.png";
+import logOutIcon from "../../images/png/logout.png";
 import { CategoriesContext } from "../../context/categories.context";
 import HTMLView from "react-native-htmlview";
 import { useNavigation } from "@react-navigation/native";
@@ -56,9 +58,9 @@ const DashBoard = () => {
         <Text style={fonts.textCircularSmallBlueCategories}>{item.title}</Text>
       </TouchableOpacity>
       {selectedCategory === item.id && (
-        <TouchableOpacity onPress={() => handleEditCategory(item.id)}>
-          <Image source={pen} style={styles.editIcon} />
-        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => handleEditCategory(item.id)}
+        ></TouchableOpacity>
       )}
     </View>
   );
@@ -136,12 +138,43 @@ const DashBoard = () => {
       >
         <View style={styles.modalContainer}>
           <View style={styles.menuContent}>
-            <Image source={logo} />
-            <Text>Conteúdo do Menu</Text>
-            <TouchableOpacity onPress={() => toggleMenu()}>
-              <Text>Fechar Menu</Text>
-            </TouchableOpacity>
-            <FlatList></FlatList>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingRight: 20,
+              }}
+            >
+              <Image source={logo} />
+              <TouchableOpacity onPress={() => toggleMenu()}>
+                <Text style={fonts.textCircularSmallBlueCategoriesBold}>X</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.itensContainer}>
+              <View style={styles.inconMenu}>
+                <Image source={chesIcon} />
+                <Text>Playbooks</Text>
+              </View>
+              <View style={styles.inconMenu}>
+                <Image source={taskIcon} />
+                <Text>Exemplos</Text>
+              </View>
+              <View style={styles.inconMenu}>
+                <Image source={messageIcon} />
+                <Text>Exemplos</Text>
+              </View>
+              <View style={styles.inconMenu}>
+                <Image source={settingIcon} />
+                <Text>Exemplos</Text>
+              </View>
+            </View>
+            <View style={styles.inconMenu}>
+              <TouchableOpacity style={{flexDirection:"row", paddingRight:10}} onPress={() => sessionsLogout()}>
+                <Image source={logOutIcon} />
+                <Text>Sair</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -172,6 +205,14 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderWidth: 0,
   },
+  itensContainer: {
+    flexDirection: "column",
+  },
+  inconMenu: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingBottom: 15,
+  },
   modalContainer: {
     flex: 1,
     flexDirection: "row",
@@ -182,9 +223,10 @@ const styles = StyleSheet.create({
     width: "80%",
     paddingTop: 70,
     paddingLeft: 30,
+    paddingBottom: 150,
     height: "100%",
-    marginTop: 200,
     backgroundColor: "#fff",
+    justifyContent: "space-between",
   },
   categoriesContainer: {
     width: "90%",
@@ -197,10 +239,10 @@ const styles = StyleSheet.create({
   cateriesTitle: {
     borderBottomWidth: 1,
     borderBottomColor: "#d8d8d8",
-    paddingBottom: 8, // Espaçamento inferior para separar do conteúdo abaixo
+    paddingBottom: 8,
     paddingHorizontal: 10,
     textAlign: "left",
-    fontWeight: "bold", // Adicione negrito se desejar
+    fontWeight: "bold",
   },
   centeredContainer: {
     marginTop: 20,

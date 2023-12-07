@@ -22,13 +22,12 @@ export const SessionsProvider = ({ children }) => {
     const { checkpassword, ...requestData } = data;
     try {
       const response = await api.post("sessions", requestData);
-      console.log(response);
       navigation.navigate("/login");
     } catch (error) {}
   };
   const sessionsLogout = async () => {
-    window.localStorage.clear();
-    navigate("/");
+    await AsyncStorage.clear();
+    navigation.navigate("Login");
   };
   return (
     <SessionsContext.Provider

@@ -1,11 +1,11 @@
 import { useContext, useRef } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, Image ,Picker } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import vector from "../../images/svg/seta.svg";
 import TextEditor from "../../components/textEditor";
 import fonts from "../../global/styles/fonts";
 import Input from "../../components/Input/input";
-
+import { Picker } from "@react-native-picker/picker";
 import { CategoriesContext } from "../../context/categories.context";
 
 const CreateCard = () => {
@@ -15,7 +15,6 @@ const CreateCard = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({});
-
   return (
     <View style={styles.createCardPageContainer}>
       <View style={styles.headerContainer}>
@@ -57,6 +56,7 @@ const CreateCard = () => {
               onValueChange={(value) => field.onChange(value)}
               style={styles.categorySelect}
             >
+              <Picker.Item label={"Selecione a categoria"} value={""} />
               {categories.map((category) => (
                 <Picker.Item
                   key={category.id}
@@ -67,7 +67,7 @@ const CreateCard = () => {
             </Picker>
           )}
           name="id_category"
-          defaultValue="" // Defina um valor padrão, se necessário
+          defaultValue={""} 
         />
       </View>
       <TextEditor />
@@ -77,7 +77,7 @@ const CreateCard = () => {
 
 const styles = StyleSheet.create({
   createCardPageContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "red",
     flex: 1,
   },
   headerContainer: {
@@ -113,6 +113,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#476EE6",
     borderColor: "transparent",
+  },
+  pickerBox: {},
+  categoriesSelectBox: {
+    width: "100%",
+    height: "auto",
+    padding: 10,
+  },
+  categorySelect: {
+    borderWidth: 2,
+    borderColor: "#D7D7D7",
+    borderRadius: 8,
   },
 });
 
