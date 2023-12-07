@@ -10,28 +10,7 @@
     display: none;
   }
 }
-/* .headerFromWebVersion {
-  display: none;
-  @media (min-width: 1024px) {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 70px;
-    margin-top: 20px;
-    padding-top: 30px;
-  }
-} */
-/* .headerFromWebVersionDiv {
-  border: 1px solid #d8d8d8;
-  width: 157px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 3px 7px;
-  border-radius: 19px;
-  background-color: #fff;
-} */
+
 
 .containerDashboard {
   padding: 16px 20px;
@@ -179,6 +158,7 @@ img {
 .categoriesBoxTitle {
   border-bottom: 1px solid #d7d7d7;
   padding-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 .cardContainer {

@@ -47,7 +47,6 @@ const EditCategoriesModal = ({ categoryId, closeModal }) => {
                 placeholder="Insira o título"
                 {...register("title")}
               />
-              {errors.title && <p>{errors.title.message}</p>}
             </div>
 
             <button>Salvar Alterações</button>

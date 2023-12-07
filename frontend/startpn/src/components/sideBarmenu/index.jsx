@@ -45,11 +45,15 @@ const SideBar = ({
   sideMenuBarCloseButtonDisplay,
   sideMenuItensDisplay,
   sideMenuItensAlignItens,
-  sideMenuItensGap
+  sideMenuItensGap,
+  selectedItenBackGroundColor,
+  selectedItenBorderRadius,
+  selectedItenPadding,
+  sideMenuItensWidth,
+  selectedItenColor
 }) => {
-  
-  const { sessionsLogout ,openSideMenu, setOpenSideMenu,toggleMenu } = useContext(SessionsContext);
-  
+  const { sessionsLogout, openSideMenu, setOpenSideMenu, toggleMenu } =
+    useContext(SessionsContext);
 
   const sideMenuBarStyles = {
     width: sideMenuWidth,
@@ -66,9 +70,9 @@ const SideBar = ({
     top: sideMenuTop,
     left: sideMenuLeft,
     transition: sideMenuTransition,
-    gap : sideMenuGap,
-    paddingTop : sideMenuPaddingTop,
-    maxWidth: sideMenuMaxWidth
+    gap: sideMenuGap,
+    paddingTop: sideMenuPaddingTop,
+    maxWidth: sideMenuMaxWidth,
   };
   const sideMenuBarCloseButtonDiv = {
     display: sideMenuBarCloseButtonDivDisplay,
@@ -77,11 +81,11 @@ const SideBar = ({
   };
 
   const sideMenuBarCloseButton = {
-    backgroundColor : sideMenuBarCloseButtonColor,
-    border : sideMenuBarCloseButtonBorder,
-    fontSize : sideMenuBarCloseButtonFontSize,
-    display : sideMenuBarCloseButtonDisplay
-  }
+    backgroundColor: sideMenuBarCloseButtonColor,
+    border: sideMenuBarCloseButtonBorder,
+    fontSize: sideMenuBarCloseButtonFontSize,
+    display: sideMenuBarCloseButtonDisplay,
+  };
 
   const sideMenuBarItens = {
     display: sideMenuBarItensDisplay,
@@ -95,8 +99,15 @@ const SideBar = ({
     display: sideMenuItensDisplay,
     alignItems: sideMenuItensAlignItens,
     gap: sideMenuItensGap,
-    cursor: "pointer"
-  }
+    width : sideMenuItensWidth, 
+    cursor: "pointer",
+  };
+  const selectedIten = {
+    backgroundColor: selectedItenBackGroundColor,
+    borderRadius: selectedItenBorderRadius,
+    padding: selectedItenPadding,
+    color: selectedItenColor
+  };
 
   return (
     <>
@@ -104,7 +115,7 @@ const SideBar = ({
         <div style={sideMenuBarCloseButtonDiv}>
           <Logo width={"153px"} heigth={"39px"} />
           <button
-          style={sideMenuBarCloseButton}
+            style={sideMenuBarCloseButton}
             className="text_circular_small_blue_categories_bold"
             onClick={() => toggleMenu()}
           >
@@ -115,7 +126,7 @@ const SideBar = ({
           className="text_circular_side_menu_color_grey "
           style={sideMenuBarItens}
         >
-          <li style={sideMenuItens}>
+          <li style={{ ...sideMenuItens, ...selectedIten }}>
             <img src={icon1} alt="" />
             {name1}
           </li>
@@ -137,7 +148,7 @@ const SideBar = ({
           </li>
         </ul>
         <h3
-        style={sideMenuItens}
+          style={sideMenuItens}
           className="sideMenuItens text_circular_side_menu_color_grey"
           onClick={() => sessionsLogout()}
         >

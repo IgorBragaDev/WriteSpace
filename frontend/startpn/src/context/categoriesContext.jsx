@@ -120,6 +120,7 @@ export const CategoriesProvider = ({ children }) => {
           Authorization: `Bearer ${userToken}`,
         },
       });
+      console.log(response)
       navigate("/dashboard");
     } catch (error) {
       console.log(error);

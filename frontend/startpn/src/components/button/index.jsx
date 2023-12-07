@@ -27,7 +27,8 @@ const Button = ({
     position : position,
     top: top,
     bottom: bottom,
-    right: rigth
+    right: rigth,
+    cursor: "pointer"
   };
   return (
     <>

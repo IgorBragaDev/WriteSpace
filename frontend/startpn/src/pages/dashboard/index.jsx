@@ -62,7 +62,7 @@ const DashBoard = () => {
               }
               headerFromWebVersionJustifyContent={"space-between"}
               headerFromWebVersionWidth={"100%"}
-              headerFromWebVersionMarginTop= {"50px"}
+              headerFromWebVersionMarginTop={"50px"}
               headerFromWebVersionMarginBotton={"20px"}
               headerFromWebVersionDivBorder={"1px solid #d8d8d8"}
               headerFromWebVersionDivWidth={"157px"}
@@ -73,7 +73,7 @@ const DashBoard = () => {
               headerFromWebVersionDivBorderRadius={"19px"}
               headerFromWebVersionDivBackGroundColor={"#fff"}
             />
-           
+
             <div className="responsiveContainerCategoriesCards">
               <div className="categoriesBox">
                 <h1 className="text_circular_label categoriesBoxTitle ">
@@ -183,6 +183,11 @@ const DashBoard = () => {
             sideMenuItensDisplay={"flex"}
             sideMenuItensAlignItens={"center"}
             sideMenuItensGap={"10px"}
+            selectedItenBackGroundColor={"#F7F9FB"}
+            selectedItenBorderRadius={"8px"}
+            selectedItenPadding={"8px"}
+            sideMenuItensWidth={"100%"}
+            selectedItenColor={"#476EE6"}
           />
 
           <div className="cornerContainer">

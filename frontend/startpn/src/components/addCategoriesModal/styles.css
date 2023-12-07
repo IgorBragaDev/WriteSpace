@@ -22,6 +22,7 @@
   border: none;
   font-size: 15px;
   font-weight: 500;
+  cursor: pointer;
 }
 .formContainer {
   display: flex;
@@ -43,6 +44,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 }
 
 .inputContainer {
@@ -57,7 +59,7 @@
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 18.215px; 
+  line-height: 18.215px;
   letter-spacing: 0.202px;
 }
 
