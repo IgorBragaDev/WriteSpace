@@ -7,7 +7,7 @@ import userIcon from "../../images/png/Bitmap.png";
 import messageIcon from "../../images/svg/message.svg";
 import settingIcon from "../../images/svg/setting.svg";
 import taskIcon from "../../images/png/task-square.png";
-import chessIcon from "../../images/svg/Vector.svg";
+import chessIcon from "../../images/svg/vector.svg";
 import userIconMenu from "../../images/svg/user-icon.svg";
 import exitIcon from "../../images/svg/logout.svg";
 import whiteVector from "../../images/svg/vectorWhite.svg";
