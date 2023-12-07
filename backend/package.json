@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "nodemon   server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "migrate": "sequelize-cli db:migrate"
   },
   "name": "backend",
   "version": "1.0.0",
