@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import RegisterPage from "../pages/Register";
 import LoginPage from "../pages/Loginpage";
 import DashBoard from "../pages/dashboard";
-import CreateCard from "../pages/createCard/createCard";
+import CreateCard from "../pages/createCard";
 import ProtectRoute from "./protectRoutes";
 import EditCard from "../pages/editCard";
 
