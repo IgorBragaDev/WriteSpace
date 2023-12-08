@@ -13,7 +13,7 @@ export const CateoriesProvider = ({ children }) => {
   useEffect(() => {
     const fetchUserToken = async () => {
       try {
-        const authToken = await AsyncStorage.getItem("authToken"); // Use AsyncStorage para armazenar o token no React Native
+        const authToken = await AsyncStorage.getItem("authToken");
         setUserToken(authToken);
       } catch (error) {
         console.log(error);
@@ -45,7 +45,6 @@ export const CateoriesProvider = ({ children }) => {
             Authorization: `Bearer ${userToken}`,
           },
         });
-        console.log("entrei aqui");
         setCategories(response.data);
       } catch (error) {
         console.log(error);
@@ -57,7 +56,6 @@ export const CateoriesProvider = ({ children }) => {
   }, [userToken]);
 
   const getCategoriesCards = async (id) => {
-    console.log(id);
     try {
       const response = await api.get(`methodology/${id}`, {
         headers: {
@@ -80,12 +78,11 @@ export const CateoriesProvider = ({ children }) => {
         },
       });
       getUserCategories();
-      setAddCategoriesModal(false)
+      setAddCategoriesModal(false);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <CategoriesContext.Provider
@@ -96,7 +93,7 @@ export const CateoriesProvider = ({ children }) => {
         cards,
         addCategoriesModal,
         setAddCategoriesModal,
-        addCategories
+        addCategories,
       }}
     >
       {children}

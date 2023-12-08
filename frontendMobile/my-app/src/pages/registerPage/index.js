@@ -2,16 +2,18 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import Input from "../../components/Input/input";
 import logo from "../../images/png/logo.png";
 import ButtonForms from "../../components/button/button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputPassword from "../../components/inputPassword/inputPassword";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import api from "../../services/api";
+import { SessionsContext } from "../../context/sessions.context";
 export default function App() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const handleTermsToggle = () => {
     setTermsAccepted(!termsAccepted);
   };
+  const { sessionsRegister } = useContext(SessionsContext);
   const navigation = useNavigation();
   const {
     control,
@@ -19,20 +21,8 @@ export default function App() {
     formState: { errors },
   } = useForm({});
 
-  const register = async (data) => {
-    try {
-      const response = await api.post("sessions", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const submit = (data) => {
-    register(data);
+    sessionsRegister(data);
   };
   return (
     <View style={styles.container}>

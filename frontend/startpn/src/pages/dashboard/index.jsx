@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
 import AddCategoriesModal from "../../components/addCategoriesModal";
 import { SessionsContext } from "../../context/sessionsContext";
-import EditCategoriesModal from "../../components/editCategoriesModal/index.jsx";
+import EditCategoriesModal from "../../components/editCategoriesmodal/index.jsx";
 import SideBar from "../../components/sideBarmenu";
 import HeaderWebVersion from "../../components/headerWebVersion";
 import "./dashboard.css";

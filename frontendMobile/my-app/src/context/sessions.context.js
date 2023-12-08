@@ -22,7 +22,8 @@ export const SessionsProvider = ({ children }) => {
     const { checkpassword, ...requestData } = data;
     try {
       const response = await api.post("sessions", requestData);
-      navigation.navigate("/login");
+      console.log(response.data)
+      navigation.navigate("Login");
     } catch (error) {}
   };
   const sessionsLogout = async () => {
