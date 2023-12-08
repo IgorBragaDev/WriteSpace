@@ -24,10 +24,10 @@ export const SessionsProvider = ({ children }) => {
   };
 
   const sessionsRegister = async (data) => {
+    console.log(data)
     const { checkpassword, ...requestData } = data;
     try {
       const response = await api.post("sessions", requestData);
-      console.log(response);
       toast.success("Usuario criado com sucesso", { autoClose: 2000 });
 
       navigate("/login");
