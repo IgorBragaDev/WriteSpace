@@ -18,8 +18,8 @@ import { SessionsContext } from "../../context/sessionsContext";
 import SideBar from "../../components/sideBarmenu";
 import HeaderWebVersion from "../../components/headerWebVersion";
 import "./dashboard.css";
-import { AddCategoriesModal } from "../../components/addcategoriesmodal";
-import {EditCategoriesModal} from "../../components/editcategoriesmodal"
+import { AddCategoriesModal } from "../../components/addCategoriesModal";
+import { EditCategoriesModal } from "../../components/EditCategoriesModal";
 
 const DashBoard = () => {
   const {
@@ -101,7 +101,9 @@ const DashBoard = () => {
                       </li>
                     ))
                   ) : (
-                    <p className="text_circular_label">Aguardando carregar...</p>
+                    <p className="text_circular_label">
+                      Aguardando carregar...
+                    </p>
                   )}
                   {isEditModalOpen ? (
                     <EditCategoriesModal closeModal={closeEditModal} />
