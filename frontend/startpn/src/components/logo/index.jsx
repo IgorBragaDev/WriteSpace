@@ -1,4 +1,4 @@
-import logo from "../../images/png/logo.png";
+import logo from "../../images/png/Logo.png";
 
 const Logo = ({ width, heigth }) => {
   const styledLogo = {
