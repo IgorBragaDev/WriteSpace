@@ -14,7 +14,7 @@ import plusSignal from "../../images/svg/mais.svg";
 import pen from "../../images/svg/pen.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
-import AddCategoriesModal from "../../components/addcategoriesmodal";
+import AddCategoriesModal from "../../components/addcategoriesmodal/index.jsx";
 import { SessionsContext } from "../../context/sessionsContext";
 import EditCategoriesModal from "../../components/editcategoriesmodal/index.jsx";
 import SideBar from "../../components/sideBarmenu";
