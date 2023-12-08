@@ -14,12 +14,15 @@ import plusSignal from "../../images/svg/mais.svg";
 import pen from "../../images/svg/pen.svg";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../context/categoriesContext";
-import EditCategoriesModal from "../../components/editcategoriesmodal/index.jsx";
-import AddCategoriesModal from "../../components/addcategoriesmodal/index.jsx";
+// import EditCategoriesModal from "../../components/editcategoriesmodal";
+// import AddCategoriesModal from "../../components/addcategoriesmodal";
+
 import { SessionsContext } from "../../context/sessionsContext";
 import SideBar from "../../components/sideBarmenu";
 import HeaderWebVersion from "../../components/headerWebVersion";
 import "./dashboard.css";
+import EditCategoriesModal from "../../components/editcategoriesmodal";
+import AddCategoriesModal from "../../components/addcategoriesmodal";
 const DashBoard = () => {
   const {
     categories,
