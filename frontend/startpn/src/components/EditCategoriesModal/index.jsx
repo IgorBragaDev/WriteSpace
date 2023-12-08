@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { CategoriesContext } from "../../context/categoriesContext";
 import { insetCategorySchema } from "../../schemas/insert.category.schema";
 
-const EditCategoriesModal = ({ categoryId, closeModal }) => {
+export const EditCategoriesModal = ({ categoryId, closeModal }) => {
   const { editCategories } = useContext(CategoriesContext);
 
   const {
@@ -57,4 +57,3 @@ const EditCategoriesModal = ({ categoryId, closeModal }) => {
   );
 };
 
-export default EditCategoriesModal;

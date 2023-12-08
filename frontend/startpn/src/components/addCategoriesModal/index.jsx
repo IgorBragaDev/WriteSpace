@@ -5,7 +5,7 @@ import { insetCategorySchema } from "../../schemas/insert.category.schema";
 import { useContext } from "react";
 import { CategoriesContext } from "../../context/categoriesContext";
 
-const AddCategoriesModal = () => {
+export const AddCategoriesModal = () => {
   const { addCategories, closeModal } = useContext(CategoriesContext);
 
   const {
@@ -47,4 +47,3 @@ const AddCategoriesModal = () => {
   );
 };
 
-export default AddCategoriesModal;
